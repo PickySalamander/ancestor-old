@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Potterblatt.Storage {
 	[CreateAssetMenu(fileName = "Person", menuName = "Ancestor/Create Person")]
@@ -9,5 +10,13 @@ namespace Potterblatt.Storage {
 		public string firstName;
 		public string lastName;
 		public LifeEvent[] timeLine;
+
+		public LifeEvent GetEventByType(LifeEventType type) {
+			return timeLine.FirstOrDefault(lifeEvent => lifeEvent.type == type);
+		}
+
+		public LifeEvent Born => GetEventByType(LifeEventType.Birth);
+		
+		public LifeEvent Death => GetEventByType(LifeEventType.Death);
 	}
 }

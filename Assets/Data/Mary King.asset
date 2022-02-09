@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   father: {fileID: 0}
   mother: {fileID: 0}
-  firstName: 
-  lastName: 
+  firstName: Mary
+  lastName: King
   timeLine:
   - type: 0
     dateTime: 12/31/1963 9:29 PM

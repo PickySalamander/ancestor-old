@@ -1,4 +1,5 @@
 ﻿using System;
+using Potterblatt.Storage;
 using UnityEditor;
 using UnityEngine;
 using Random = System.Random;
@@ -44,7 +45,7 @@ namespace Potterblatt.Editor {
 
 			try {
 				var date = new DateTime(year, month, day, hour, minute, 0);
-				return date.ToString(DateDrawer.DateStorage);
+				return date.ToString(LifeEvent.DateTimeFormat);
 			}
 			catch(ArgumentOutOfRangeException) {
 				Debug.LogError($"Failed to generate date {year}/{month}/{day} {hour}:{minute},");
