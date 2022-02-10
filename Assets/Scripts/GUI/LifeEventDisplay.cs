@@ -9,6 +9,27 @@ namespace Potterblatt.GUI {
 		public TMP_Text text;
 		public Button button;
 
+		private LifeEvent lifeEvent;
+
+		public LifeEvent LifeEvent {
+			get => lifeEvent;
+
+			set {
+				lifeEvent = value;
+				
+				switch(lifeEvent.type) {
+					case LifeEventType.Birth:
+						text.text = $"Was born on {lifeEvent.dateTime}";
+						break;
+					case LifeEventType.Death:
+						text.text = $"Died on {lifeEvent.dateTime}";
+						break;
+					default:
+						throw new ArgumentOutOfRangeException();
+				}
+			}
+		}
+
 		private void Reset() {
 			if(!text) {
 				text = GetComponentInChildren<TMP_Text>();
@@ -16,19 +37,6 @@ namespace Potterblatt.GUI {
 
 			if(!button) {
 				button = GetComponentInChildren<Button>();
-			}
-		}
-
-		public void Setup(LifeEvent lifeEvent) {
-			switch(lifeEvent.type) {
-				case LifeEventType.Birth:
-					text.text = $"Was born on {lifeEvent.dateTime}";
-					break;
-				case LifeEventType.Death:
-					text.text = $"Died on {lifeEvent.dateTime}";
-					break;
-				default:
-					throw new ArgumentOutOfRangeException();
 			}
 		}
 	}

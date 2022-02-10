@@ -1,7 +1,7 @@
 using UnityEngine;
 
 namespace Potterblatt.GUI {
-	public class DeathCert : MonoBehaviour {
+	public class DeathCert : GamePage {
 		public Handwriting county;
 		public Handwriting state;
 		public Handwriting town;
