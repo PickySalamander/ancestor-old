@@ -1,0 +1,26 @@
+:root {
+    --color-brown: rgb(70, 60, 47);
+    --color-light-brown: rgb(207, 184, 142);
+    transition: left 0.5s;
+    transition-timing-function: ease-in;
+}
+
+.off-screen {
+    left: 100%;
+}
+
+.unity-text-element {
+    -unity-font-definition: resource('Fonts & Materials/RobotoSlab-VariableFont_wght SDF 1');
+    font-size: 18px;
+}
+
+Button {
+    border-radius: 0;
+    transition: background-color 0.5s, color 0.5s;
+}
+
+.paper {
+    background-color: var(--color-light-brown);
+    border-radius: 8px;
+    margin: auto;
+}

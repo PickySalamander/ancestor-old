@@ -1,11 +1,9 @@
 ﻿using TMPro;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
-	public class BirthIndexRow : MonoBehaviour {
-		public TMP_Text date;
-		public TMP_Text birthName;
-		public TMP_Text father;
-		public TMP_Text mother;
+	public class BirthIndexRow {
+		
 	}
 }

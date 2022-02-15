@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Default.uss?fileID=7433441132597879392&amp;guid=d53892c7e66179b49b67247a943581c6&amp;type=3#Default" />
+    <Style src="project://database/Assets/UI%20Toolkit/Main.uss?fileID=7433441132597879392&amp;guid=33bc9cb64daada84bbb673e44b281fb2&amp;type=3#Main" />
+    <ui:VisualElement name="top-bar">
+        <ui:Button text="&lt; Back" display-tooltip-when-elided="true" />
+    </ui:VisualElement>
+    <ui:VisualElement name="content" content-container="true" />
+</ui:UXML>

@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
-	public class TreePage : GamePage {
+	public class TreePage : VisualElement {
 		
 	}
 }

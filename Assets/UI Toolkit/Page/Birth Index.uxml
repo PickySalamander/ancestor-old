@@ -1,0 +1,31 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Default.uss?fileID=7433441132597879392&amp;guid=d53892c7e66179b49b67247a943581c6&amp;type=3#Default" />
+    <Style src="project://database/Assets/UI%20Toolkit/Birth%20Index.uss?fileID=7433441132597879392&amp;guid=f42cde333c3c7da4197e0ed4931ed77b&amp;type=3#Birth Index" />
+    <Potterblatt.GUI.BirthIndex class="paper" style="width: 1024px; height: 1024px; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+        <ui:VisualElement name="top" style="margin-bottom: 20px;">
+            <ui:Label text="BUREAU OF VITAL STATISTICS" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: upper-center;" />
+            <ui:Label name="state-label" text="STATE BOARD OF HEALTH" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: upper-center;" />
+            <ui:Label text="BIRTH INDEX" display-tooltip-when-elided="true" style="font-size: 32px; -unity-text-align: upper-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="table" style="height: 100%;">
+            <ui:VisualElement class="borders">
+                <ui:VisualElement class="date" />
+                <ui:VisualElement class="name" />
+                <ui:VisualElement class="parent" />
+                <ui:VisualElement class="parent last" />
+            </ui:VisualElement>
+            <ui:VisualElement name="header" class="row">
+                <ui:Label text="Date" display-tooltip-when-elided="true" class="date" />
+                <ui:Label text="Name" display-tooltip-when-elided="true" class="name" />
+                <ui:Label text="Name of Father" display-tooltip-when-elided="true" class="parent" />
+                <ui:Label text="Name of Mother" display-tooltip-when-elided="true" class="parent last" />
+            </ui:VisualElement>
+            <ui:VisualElement name="row-template" class="row">
+                <ui:Label text="JUL 16 1960" display-tooltip-when-elided="true" class="date" />
+                <ui:Label text="Laura Cobington" display-tooltip-when-elided="true" class="name" />
+                <ui:Label text="Bob Cobington" display-tooltip-when-elided="true" class="parent" />
+                <ui:Label text="Janet Smith Cobington" display-tooltip-when-elided="true" class="parent last" />
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </Potterblatt.GUI.BirthIndex>
+</ui:UXML>
