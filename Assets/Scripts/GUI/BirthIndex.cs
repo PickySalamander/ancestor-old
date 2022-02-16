@@ -1,15 +1,16 @@
-﻿using Potterblatt.Storage;
+﻿using System;
+using Potterblatt.Storage;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
-	public class BirthIndex : AncestorVisualElement {
-		private BirthIndexRow rowTemplate;
+	public class BirthIndex : GamePage {
+		private VisualElement rowTemplate;
 
 		private Label stateLabel;
 
-		protected override void DoInit() {
-			stateLabel = this.Q<Label>("state-label");
+		private void Awake() {
+			stateLabel = RootElement.Q<Label>("state-label");
 			
 			Debug.Log("Here 1 " + stateLabel);
 		}
@@ -19,7 +20,5 @@ namespace Potterblatt.GUI {
 			
 			stateLabel.text = $"{state} State Board of Health".ToUpper();
 		}
-
-		public new class UxmlFactory : UxmlFactory<BirthIndex> {}
 	}
 }

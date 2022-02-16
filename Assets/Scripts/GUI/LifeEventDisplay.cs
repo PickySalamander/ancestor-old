@@ -2,11 +2,11 @@
 using Potterblatt.Storage;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
-	public class LifeEventDisplay : MonoBehaviour {
-		public TMP_Text text;
+	public class LifeEventDisplay : GamePage {
+		public Label text;
 		public Button button;
 
 		private LifeEvent lifeEvent;
@@ -23,6 +23,7 @@ namespace Potterblatt.GUI {
 						break;
 					case LifeEventType.Death:
 						text.text = $"Died on {lifeEvent.dateTime}";
+						button.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
 						break;
 					default:
 						throw new ArgumentOutOfRangeException();
@@ -30,14 +31,9 @@ namespace Potterblatt.GUI {
 			}
 		}
 
-		private void Reset() {
-			if(!text) {
-				text = GetComponentInChildren<TMP_Text>();
-			}
-
-			if(!button) {
-				button = GetComponentInChildren<Button>();
-			}
+		private void Awake() {
+			text = RootElement.Q<Label>();
+			button = RootElement.Q<Button>();
 		}
 	}
 }

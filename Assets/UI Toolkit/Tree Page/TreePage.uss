@@ -1,0 +1,73 @@
+.profile-button {
+    color: var(--color-brown);
+    background-color: rgb(255, 255, 255);
+    padding: 5px;
+    border-width: 0;
+}
+
+.profile-button Label {
+    margin: 0;
+    padding: 0;
+}
+
+.profile-button.discovered {
+    height: 160px;
+    width: 128px;
+    border-radius: 4px;
+}
+
+.profile-button.undiscovered {
+    height: 64px;
+    width: 64px;
+    border-radius: 64px;
+}
+
+.if-discovered {
+    width: 100%;
+    height: 100%;
+}
+
+.if-undiscovered {
+    width: 100%;
+    height: 100%;
+}
+
+.profile-button.discovered .if-undiscovered {
+    display: none;
+}
+
+.profile-button.undiscovered .if-discovered {
+    display: none;
+}
+
+.if-undiscovered Label {
+    width: 100%;
+    height: 100%;
+    font-size: 32px;
+    -unity-text-align: middle-center;
+}
+
+.profile-button .img {
+    background-image: url('project://database/Assets/GUI/Profile%20Icon.svg?fileID=3286163911610860551&guid=fc41258f7a530d9419d060da032cea9b&type=3#Profile Icon');
+    width: 100%;
+    height: 50%;
+    -unity-background-scale-mode: scale-to-fit;
+    margin-bottom: 10px;
+    -unity-background-image-tint-color: var(--color-brown);
+}
+
+.profile-button:hover {
+    border-width: 4px;
+    border-color: var(--color-brown);
+    padding: 1px;
+}
+
+.profile-button #name {
+    white-space: normal;
+}
+
+.tree-page {
+    border-width: 0;
+    border-radius: 4px;
+    background-color: var(--color-light-brown);
+}

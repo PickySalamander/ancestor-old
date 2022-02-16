@@ -7,34 +7,44 @@ using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
 	public class UIManager : SingletonMonobehaviour<UIManager> {
-		public UIDocument birthIndex;
+		public TreePage treePage;
+		public InfoPage infoPage;
+		public BirthIndex birthIndex;
 
-		private void Start() {
-			var index = AddPage<BirthIndex>(birthIndex);
-			index.Setup(null, "New York");
+		private GamePage currentPage;
+
+		protected override void Awake() {
+			base.Awake();
+
+			foreach(var page in GetComponentsInChildren<GamePage>()) {
+				page.gameObject.SetActive(false);
+			}
+			
+			AddPage(treePage);
 		}
 
 		public void OpenInfo(Person person) {
-			// AddPage(infoPage).person = person;
-		}
-		
-		private T AddPage<T>(UIDocument document) where T : AncestorVisualElement {
-			document.gameObject.SetActive(true);
-			document.rootVisualElement.style.left = new StyleLength {
-				value = new Length(100, LengthUnit.Percent)
-			};
-			
-			StartCoroutine(Transition(document));
-			
-			return document.rootVisualElement.Q<T>();
+			Debug.Log($"Open person! {person.firstName}");
+			AddPage(infoPage).Person = person;
 		}
 
-		private IEnumerator Transition(UIDocument document) {
-			yield return new WaitForSeconds(0.5f);
+		public void OpenBirth(Person person) {
+			AddPage(birthIndex);
+		}
+		
+		private T AddPage<T>(T page) where T : GamePage{
+			if(currentPage == page) {
+				return page;
+			}
 			
-			document.rootVisualElement.style.left = new StyleLength {
-				value = new Length(0, LengthUnit.Percent)
-			};
+			if(currentPage) {
+				currentPage.gameObject.SetActive(false);
+			}
+			
+			page.gameObject.SetActive(true);
+			currentPage = page;
+
+			return page;
 		}
 	}
 }

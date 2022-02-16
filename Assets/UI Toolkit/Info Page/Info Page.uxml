@@ -1,0 +1,25 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Default.uss?fileID=7433441132597879392&amp;guid=d53892c7e66179b49b67247a943581c6&amp;type=3#Default" />
+    <Style src="project://database/Assets/UI%20Toolkit/Info%20Page/Info%20Page.uss?fileID=7433441132597879392&amp;guid=868679cd6f99fa846acd59e7ab74d75b&amp;type=3#Info Page" />
+    <ui:VisualElement class="paper" style="height: 1060px; width: 728px;">
+        <ui:Label text="DISCOVERED PERSON" display-tooltip-when-elided="true" style="-unity-text-align: upper-center; font-size: 32px; margin-top: 10px; margin-bottom: 20px;" />
+        <ui:VisualElement class="top" style="flex-direction: row;">
+            <ui:VisualElement name="img" />
+            <ui:VisualElement class="top-info">
+                <ui:VisualElement class="left">
+                    <ui:Label text="Full Name:" />
+                    <ui:Label text="Date of Birth:" />
+                    <ui:Label text="Date of Death:" />
+                </ui:VisualElement>
+                <ui:VisualElement class="right">
+                    <ui:Label name="full-name" text="?" />
+                    <ui:Label name="dob" text="?" />
+                    <ui:Label name="dod" text="?" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="bottom">
+            <ui:VisualElement name="timeline" content-container="true" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>

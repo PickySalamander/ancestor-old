@@ -1,0 +1,82 @@
+.top {
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-bottom: 20px;
+    border-bottom-color: var(--color-brown);
+    border-width: 0 0 2px 0;
+    display: flex;
+    flex-direction: row;
+}
+
+#img {
+    width: 170px;
+    height: 170px;
+    background-image: url('project://database/Assets/GUI/Profile%20Icon.svg?fileID=3286163911610860551&guid=fc41258f7a530d9419d060da032cea9b&type=3#Profile Icon');
+    -unity-background-image-tint-color: var(--color-brown);
+    margin-right: 20px;
+}
+
+.top-info {
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom {
+    flex-grow: 1;
+    border-left-width: 2px;
+    border-left-color: var(--color-brown);
+    margin: 50px;
+    height: 100%;
+}
+
+#timeline {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.timeline-element {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    width: 100%;
+    left: -9px;
+    translate: 0 -50%;
+}
+
+.timeline-element .circle {
+    width: 16px;
+    height: 16px;
+    border-width: 4px;
+    border-color: var(--color-brown);
+    border-radius: 18px;
+    background-color: var(--color-light-brown);
+}
+
+.timeline-element .line {
+    width: 30px;
+    height: 4px;
+    background-color: var(--color-brown);
+    position: relative;
+    left: -2px;
+}
+
+.timeline-element #event-text {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+
+#doc-button {
+    height: 100%;
+    width: 20px;
+    background-image: url('project://database/Assets/GUI/File%20Open%20Icon.svg?fileID=3286163911610860551&guid=4af80e47499796e4f9514c00734e9f13&type=3#File Open Icon');
+    -unity-background-scale-mode: scale-to-fit;
+    background-color: initial;
+    border-width: 0;
+    -unity-background-image-tint-color: var(--color-brown);
+}
+
+#doc-button:hover {
+    -unity-background-image-tint-color: rgb(50, 40, 27);
+}

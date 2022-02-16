@@ -1,0 +1,10 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:VisualElement class="timeline-element">
+        <ui:VisualElement class="circle" />
+        <ui:VisualElement class="line" />
+        <ui:Label name="event-text" text="Born on 12/13/21 at 3:43 PM" />
+        <ui:Button display-tooltip-when-elided="true" name="doc-button">
+            <ui:VisualElement class="icon" />
+        </ui:Button>
+    </ui:VisualElement>
+</ui:UXML>

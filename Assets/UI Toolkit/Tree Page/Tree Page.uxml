@@ -1,0 +1,11 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Default.uss?fileID=7433441132597879392&amp;guid=d53892c7e66179b49b67247a943581c6&amp;type=3#Default" />
+    <Style src="project://database/Assets/UI%20Toolkit/TreePage.uss?fileID=7433441132597879392&amp;guid=05a95ce83f159d748bbea548cada69d9&amp;type=3#TreePage" />
+    <ui:VisualElement name="tree-page" class="tree-page paper" style="width: 1420px; height: 1060px;">
+        <ui:VisualElement name="main" style="position: absolute; top: 500px; left: 50%; translate: -50% 0;" />
+
+        <ui:VisualElement name="father" style="position: absolute; top: 250px; right: 450px;" />
+
+        <ui:VisualElement name="mother" style="position: absolute; top: 250px; left: 450px;" />
+    </ui:VisualElement>
+</ui:UXML>

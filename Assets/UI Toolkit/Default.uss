@@ -16,11 +16,14 @@
 
 Button {
     border-radius: 0;
-    transition: background-color 0.5s, color 0.5s;
+    transition: all 0.5s;
 }
 
 .paper {
     background-color: var(--color-light-brown);
+    color: var(--color-brown);
     border-radius: 8px;
     margin: auto;
+    height: 100%;
+    width: 256px;
 }

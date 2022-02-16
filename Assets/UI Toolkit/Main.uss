@@ -34,3 +34,7 @@
     background-image: url('project://database/Assets/GUI/Table%20Texture.psd?fileID=2800000&guid=80fd17d2f7b7d4341b662722ae72fed9&type=3#Table Texture');
     -unity-background-scale-mode: scale-and-crop;
 }
+
+#content > * {
+    height: 100%;
+}
