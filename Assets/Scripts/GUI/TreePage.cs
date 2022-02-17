@@ -1,5 +1,6 @@
 ﻿using System;
 using Potterblatt.Storage;
+using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine.UIElements;
 
@@ -9,7 +10,7 @@ namespace Potterblatt.GUI {
 
 		public VisualTreeAsset template;
 
-		private void Start() {
+		private void OnEnable() {
 			AddPerson(RootElement.Q<VisualElement>("main"), familyRoot);
 			AddPerson(RootElement.Q<VisualElement>("father"), familyRoot.father);
 			AddPerson(RootElement.Q<VisualElement>("mother"), familyRoot.mother);
@@ -20,12 +21,28 @@ namespace Potterblatt.GUI {
 			location.Add(newElement);
 
 			var button = newElement.Q<Button>();
-			button.clicked += () => {
-				UIManager.Instance.OpenInfo(person);
-			};
+			if(person.HasNoDiscoveries()) {
+				button.AddToClassList("undiscovered");
+				button.RemoveFromClassList("discovered");
+			}
+			else {
+				button.AddToClassList("discovered");
+				button.RemoveFromClassList("undiscovered");
+				
+				button.clicked += () => {
+					UIManager.Instance.OpenInfo(person);
+				};
+				
+				newElement.Q<Label>("name").text = person.IsDiscovered(Discovery.Name) ? 
+					$"{person.firstName} {person.lastName}" : "?";
 
-			newElement.Q<Label>("name").text = $"{person.firstName} {person.lastName}";
-			newElement.Q<Label>("years").text = $"{DateUtils.GetYear(person.Born)}-{DateUtils.GetYear(person.Death)}";
+				var born = person.IsDiscovered(Discovery.Birth) 
+					? DateUtils.GetYear(person.Born) : "?";
+				
+				var death = person.IsDiscovered(Discovery.Death) 
+					? DateUtils.GetYear(person.Death) : "?";
+				newElement.Q<Label>("years").text = $"{born}-{death}";
+			}
 		}
 	}
 }

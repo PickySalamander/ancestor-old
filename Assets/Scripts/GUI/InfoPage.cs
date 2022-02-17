@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Potterblatt.Storage;
+using Potterblatt.Storage.People;
 using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
@@ -34,13 +35,21 @@ namespace Potterblatt.GUI {
 					}
 				}
 
-				fullName.text = $"Full Name: {person.firstName} {person.lastName}";
+				fullName.text = person.IsDiscovered(Discovery.Name) ? 
+					$"{person.firstName} {person.lastName}" : "?";
 
 				var born = person.Born;
-				dob.text = $"Date of Birth: {(born == null ? "?" : born.DateString)}";
-
+				dob.text = person.IsDiscovered(Discovery.Birth) ? born.DateString : "?";
+				
 				var death = person.Death;
-				dod.text = $"Date of Death: {(death == null ? "?" : death.DateString)}";
+				if(death == null) {
+					dod.text = "Alive";
+				} else if(person.IsDiscovered(Discovery.Death)) {
+					dod.text = death.DateString;
+				}
+				else {
+					dod.text = "?";
+				}
 
 				start = born?.Parsed ?? DateTime.MinValue;
 				var end = death?.Parsed ?? DateTime.Now;
@@ -52,17 +61,13 @@ namespace Potterblatt.GUI {
 				foreach(var lifeEvent in person.timeLine) {
 					var newEvent = Instantiate(lifeEventTemplate, transform, false);
 					newEvent.gameObject.name = $"{lifeEvent.type} - {lifeEvent.DateString}";
-					newEvent.LifeEvent = lifeEvent;
+					newEvent.Setup(person, lifeEvent);
 					
-					var distance = newEvent.LifeEvent.Parsed - start;
+					var distance = lifeEvent.Parsed - start;
 					var percent = distance.Ticks / timeDuration.Ticks;
 
 					newEvent.RootElement.style.top = new StyleLength {
 						value = new Length(percent * 100, LengthUnit.Percent)
-					};
-
-					newEvent.button.clicked += () => {
-						UIManager.Instance.OpenBirth(person);
 					};
 				
 					events.Add(newEvent);

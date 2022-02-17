@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
+using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEditor;
 using UnityEngine;
@@ -17,8 +18,6 @@ namespace Potterblatt.Editor {
 
 		private UnityWebRequest request;
 		
-		
-
 		private void OnEnable() {
 			request = null;
 		}
@@ -32,7 +31,7 @@ namespace Potterblatt.Editor {
 
 			numNames = EditorGUILayout.IntField("Number of names to generate", numNames);
 			
-			append = EditorGUILayout.Toggle("Append to the file or new file?", append);
+			append = !EditorGUILayout.Toggle("Clear out the file?", !append);
 
 			UnityEngine.GUI.enabled = numNames > 0 || request != null;
 
@@ -70,26 +69,23 @@ namespace Potterblatt.Editor {
 		private void ParseResult() {
 			var parsed = request.GetJsonResponse<JObject>();
 			var results = (JArray) parsed["results"];
+			var targetRandom = (RandomNames) target;
 
 			if(results != null) {
-				var people = ((RandomNames) target).people ?? new List<RandomNames.RandomPerson>();
-				
-				if(!append && people.Count > 0) {
-					people.Clear();
-				}
-				
 				Undo.RecordObject(target, "Generate Random Names");
+				
+				if(!append) {
+					targetRandom.femaleNames = new List<string>();
+					targetRandom.maleNames = new List<string>();
+				}
 				
 				foreach(var result in results) {
 					var nameObj = result.Value<JObject>("name");
 					Debug.Assert(nameObj != null, nameof(nameObj) + " != null");
-					
-					var newPerson = new RandomNames.RandomPerson {
-						gender = result.Value<string>("gender"),
-						fullName = $"{nameObj.Value<string>("first")} {nameObj.Value<string>("last")}"
-					};
-					
-					people.Add(newPerson);
+
+					var isFemale = result.Value<string>("gender") == "female";
+					var list = isFemale ? targetRandom.femaleNames : targetRandom.maleNames;
+					list.Add($"{nameObj.Value<string>("first")} {nameObj.Value<string>("last")}");
 				}
 			}
 		}

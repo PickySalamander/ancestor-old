@@ -1,14 +1,15 @@
 ﻿using System;
 using System.Globalization;
+using Potterblatt.Storage.Documents;
 
-namespace Potterblatt.Storage {
+namespace Potterblatt.Storage.People {
 	[Serializable]
 	public class LifeEvent {
 		public const string DateTimeFormat = "M/d/yyyy h:mm tt";
 		public const string DateFormat = "M/d/yyyy";
 		
 		public LifeEventType type;
-		[DateAttribute]
+		[Date]
 		public string dateTime;
 		public Document source;
 

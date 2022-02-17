@@ -1,39 +1,51 @@
 ﻿using System;
-using Potterblatt.Storage;
-using TMPro;
-using UnityEngine;
+using Potterblatt.Storage.People;
 using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
 	public class LifeEventDisplay : GamePage {
-		public Label text;
-		public Button button;
+		private Label text;
+		private Button button;
 
+		private Person person;
 		private LifeEvent lifeEvent;
-
-		public LifeEvent LifeEvent {
-			get => lifeEvent;
-
-			set {
-				lifeEvent = value;
-				
-				switch(lifeEvent.type) {
-					case LifeEventType.Birth:
-						text.text = $"Was born on {lifeEvent.dateTime}";
-						break;
-					case LifeEventType.Death:
-						text.text = $"Died on {lifeEvent.dateTime}";
-						button.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
-						break;
-					default:
-						throw new ArgumentOutOfRangeException();
-				}
-			}
-		}
 
 		private void Awake() {
 			text = RootElement.Q<Label>();
 			button = RootElement.Q<Button>();
+		}
+
+		public void Setup(Person person, LifeEvent lifeEvent) {
+			this.person = person;
+			this.lifeEvent = lifeEvent;
+			
+			bool discovered;
+			
+			switch(lifeEvent.type) {
+				case LifeEventType.Birth:
+					discovered = person.IsDiscovered(Discovery.Birth);
+					text.text = discovered ? $"Was born on {lifeEvent.dateTime}" : "?";
+					break;
+				case LifeEventType.Death:
+					discovered = person.IsDiscovered(Discovery.Death);
+					text.text = discovered ? $"Died on {lifeEvent.dateTime}" : "?";
+					break;
+				default:
+					throw new ArgumentOutOfRangeException();
+			}
+
+			if(discovered && lifeEvent.source) {
+				button.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.Flex);
+				button.clicked += OnClicked;
+			}
+			else {
+				button.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+				button.clicked -= OnClicked;
+			}
+		}
+
+		private void OnClicked() {
+			UIManager.Instance.OpenDoc(person, lifeEvent.source);
 		}
 	}
 }

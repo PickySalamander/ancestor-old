@@ -1,5 +1,7 @@
 ﻿using System;
 using Potterblatt.Storage;
+using Potterblatt.Storage.People;
+using Potterblatt.Utils;
 using UnityEditor;
 using UnityEngine;
 using Random = System.Random;
@@ -38,20 +40,7 @@ namespace Potterblatt.Editor {
 		}
 
 		private string GenerateDates() {
-			var month = random.Next(1, 13);
-			var day = DateTime.DaysInMonth(year, month);
-			var hour = random.Next(0, 24);
-			var minute = random.Next(0, 60);
-
-			try {
-				var date = new DateTime(year, month, day, hour, minute, 0);
-				return date.ToString(LifeEvent.DateTimeFormat);
-			}
-			catch(ArgumentOutOfRangeException) {
-				Debug.LogError($"Failed to generate date {year}/{month}/{day} {hour}:{minute},");
-			}
-
-			return "error";
+			return DateUtils.RandomDateInYear(year).ToString(LifeEvent.DateTimeFormat);
 		}
 		
 		/// <summary>Quick open function to open the window</summary>

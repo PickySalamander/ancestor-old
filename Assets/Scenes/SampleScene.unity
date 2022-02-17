@@ -412,6 +412,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a8277c042844a0591d70dce722cfe5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dateFormat: MMM/d/yyyy
+  randomNames: {fileID: 11400000, guid: 45e41f45a85d4044584be67f574d6d07, type: 2}
+  numberOfPeople: 32
 --- !u!1 &753681638
 GameObject:
   m_ObjectHideFlags: 0
@@ -524,7 +527,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   treePage: {fileID: 449542761}
   infoPage: {fileID: 753681642}
-  birthIndex: {fileID: 578955423}
+  birthIndexPage: {fileID: 578955423}
 --- !u!114 &976341928
 MonoBehaviour:
   m_ObjectHideFlags: 0
