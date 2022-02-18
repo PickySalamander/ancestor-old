@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7895f594a36d43238aa92ce3ff642630, type: 3}
   m_Name: Mary King
   m_EditorClassIdentifier: 
+  uuid: 51dca70b-c600-41d5-b1b5-b7e0dc954c26
   father: {fileID: 0}
   mother: {fileID: 0}
   firstName: Mary
@@ -19,5 +20,8 @@ MonoBehaviour:
   timeLine:
   - type: 0
     dateTime: 12/31/1963 9:29 PM
+    source: {fileID: 0}
   - type: 1
     dateTime: 1/31/1982 4:10 AM
+    source: {fileID: 0}
+  discovered: 0

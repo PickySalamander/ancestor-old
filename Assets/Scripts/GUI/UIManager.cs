@@ -30,6 +30,12 @@ namespace Potterblatt.GUI {
 			
 			backButton = rootDoc.rootVisualElement.Q<Button>("back-button");
 			backButton.clicked += () => AddPage(treePage);
+
+			StartCoroutine(WaitToSetup());
+		}
+
+		private IEnumerator WaitToSetup() {
+			yield return new WaitUntil(() => SaveState.IsSetup);
 			
 			AddPage(treePage);
 		}

@@ -1,9 +1,12 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
+using UnityEditor;
 using UnityEngine;
 
 namespace Potterblatt.Storage.People {
 	[CreateAssetMenu(fileName = "Person", menuName = "Ancestor/Create Person")]
 	public class Person : ScriptableObject {
+		public string uuid;
 		public Person father;
 		public Person mother;
 		
@@ -12,7 +15,14 @@ namespace Potterblatt.Storage.People {
 		
 		public LifeEvent[] timeLine;
 		
-		public DiscoveryType discovered = DiscoveryType.None;
+		[SerializeField]
+		private DiscoveryType defaultDiscovery = DiscoveryType.None;
+
+		public DiscoveryType DefaultDiscovery => defaultDiscovery;
+
+		private void Reset() {
+			uuid ??= Guid.NewGuid().ToString();
+		}
 		
 		public LifeEvent GetEventByType(LifeEventType type) {
 			return timeLine.FirstOrDefault(lifeEvent => lifeEvent.type == type);
@@ -25,11 +35,11 @@ namespace Potterblatt.Storage.People {
 		public LifeEvent Death => GetEventByType(LifeEventType.Death);
 		
 		public bool HasNoDiscoveries() {
-			return discovered == DiscoveryType.None;
+			return SaveState.Instance[this] == DiscoveryType.None;
 		}
 
 		public bool IsDiscovered(DiscoveryType type) {
-			return (discovered & type) != DiscoveryType.None;
+			return (SaveState.Instance[this] & type) != DiscoveryType.None;
 		}
 	}
 }

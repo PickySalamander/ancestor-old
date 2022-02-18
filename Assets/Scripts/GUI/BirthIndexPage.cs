@@ -113,11 +113,11 @@ namespace Potterblatt.GUI {
 				if(userData is BirthIndexRowInfo rowInfo && rowInfo.IsDiscoverable()) {
 					switch(button.name) {
 						case "mother" when rowInfo.IsDiscoverable(true):
-							rowInfo.discoverMother.person.discovered |= rowInfo.discoverMother.type;
+							SaveState.Instance.ChangeDiscovery(rowInfo.discoverMother);
 							classToAdd = "right";
 							break;
 						case "father" when rowInfo.IsDiscoverable(false):
-							rowInfo.discoverFather.person.discovered |= rowInfo.discoverFather.type;
+							SaveState.Instance.ChangeDiscovery(rowInfo.discoverFather);
 							classToAdd = "right";
 							break;
 					}
@@ -125,7 +125,17 @@ namespace Potterblatt.GUI {
 				
 				button.AddToClassList(classToAdd);
 				button.pickingMode = PickingMode.Ignore;
+
+				StartCoroutine(RemoveClass(button));
 			}
+		}
+
+		private static IEnumerator RemoveClass(VisualElement button) {
+			yield return new WaitForSeconds(3.0f);
+			
+			button.RemoveFromClassList("right");
+			button.RemoveFromClassList("wrong");
+			button.pickingMode = PickingMode.Position;
 		}
 	}
 }

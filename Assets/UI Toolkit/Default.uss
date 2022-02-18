@@ -10,7 +10,7 @@
 }
 
 .unity-text-element {
-    -unity-font-definition: resource('Fonts & Materials/RobotoSlab-VariableFont_wght SDF 1');
+    -unity-font-definition: resource('Fonts & Materials/RobotoSlab-VariableFont_wght SDF');
     font-size: 18px;
 }
 

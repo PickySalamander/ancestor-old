@@ -88,9 +88,9 @@
 }
 
 #table .row Button.wrong {
-    background-color: red;
+    background-color: #D89774;
 }
 
 #table .row Button.right {
-    background-color: green;
+    background-color: #A9C574;
 }

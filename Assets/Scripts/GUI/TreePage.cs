@@ -2,6 +2,7 @@
 using Potterblatt.Storage;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
+using UnityEditor;
 using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
@@ -11,9 +12,11 @@ namespace Potterblatt.GUI {
 		public VisualTreeAsset template;
 
 		private void OnEnable() {
-			AddPerson(RootElement.Q<VisualElement>("main"), familyRoot);
-			AddPerson(RootElement.Q<VisualElement>("father"), familyRoot.father);
-			AddPerson(RootElement.Q<VisualElement>("mother"), familyRoot.mother);
+			if(SaveState.IsSetup) {
+				AddPerson(RootElement.Q<VisualElement>("main"), familyRoot);
+				AddPerson(RootElement.Q<VisualElement>("father"), familyRoot.father);
+				AddPerson(RootElement.Q<VisualElement>("mother"), familyRoot.mother);
+			}
 		}
 
 		private void AddPerson(VisualElement location, Person person) {

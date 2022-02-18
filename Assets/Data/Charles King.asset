@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7895f594a36d43238aa92ce3ff642630, type: 3}
   m_Name: Charles King
   m_EditorClassIdentifier: 
+  uuid: 08c15733-7f58-4926-8b8d-6cde75e7d82a
   father: {fileID: 0}
   mother: {fileID: 0}
   firstName: Charles
@@ -19,6 +20,8 @@ MonoBehaviour:
   timeLine:
   - type: 0
     dateTime: 2/28/1953 1:52 AM
+    source: {fileID: 0}
   - type: 1
     dateTime: 3/31/1985 11:04 AM
+    source: {fileID: 0}
   discovered: 0

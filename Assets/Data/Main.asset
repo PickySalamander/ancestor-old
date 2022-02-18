@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7895f594a36d43238aa92ce3ff642630, type: 3}
   m_Name: Main
   m_EditorClassIdentifier: 
+  uuid: f5ca3153-df91-44ca-be27-1aa04efb4fe4
   father: {fileID: 11400000, guid: 0c7cb91e9a10a304eb8d3645c1dfdfb1, type: 2}
   mother: {fileID: 11400000, guid: 10074b35b1e65e846a507cdf5d7aafdb, type: 2}
   firstName: Mackenzie
@@ -20,4 +21,4 @@ MonoBehaviour:
   - type: 0
     dateTime: 1/31/1982 3:59 AM
     source: {fileID: 11400000, guid: 79ee0295231d9444b843ab39348dfe3b, type: 2}
-  discovered: -1
+  defaultDiscovery: -1
