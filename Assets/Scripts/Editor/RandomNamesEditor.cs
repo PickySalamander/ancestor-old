@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
@@ -72,11 +73,16 @@ namespace Potterblatt.Editor {
 			var targetRandom = (RandomNames) target;
 
 			if(results != null) {
-				Undo.RecordObject(target, "Generate Random Names");
+				Undo.RegisterCompleteObjectUndo(target, "Generate Random Names");
+
+				var femaleNames = new HashSet<string>();
+				var maleNames = new HashSet<string>();
+				var lastNames = new HashSet<string>();
 				
-				if(!append) {
-					targetRandom.femaleNames = new List<string>();
-					targetRandom.maleNames = new List<string>();
+				if(append) {
+					femaleNames.UnionWith(targetRandom.femaleNames);
+					maleNames.UnionWith(targetRandom.maleNames);
+					lastNames.UnionWith(targetRandom.lastNames);
 				}
 				
 				foreach(var result in results) {
@@ -84,9 +90,16 @@ namespace Potterblatt.Editor {
 					Debug.Assert(nameObj != null, nameof(nameObj) + " != null");
 
 					var isFemale = result.Value<string>("gender") == "female";
-					var list = isFemale ? targetRandom.femaleNames : targetRandom.maleNames;
-					list.Add($"{nameObj.Value<string>("first")} {nameObj.Value<string>("last")}");
+					var list = isFemale ? femaleNames : maleNames;
+					list.Add(nameObj.Value<string>("first"));
+					lastNames.Add(nameObj.Value<string>("last"));
 				}
+
+				targetRandom.lastNames = lastNames.ToList();
+				targetRandom.femaleNames = femaleNames.ToList();
+				targetRandom.maleNames = maleNames.ToList();
+				
+				EditorUtility.SetDirty(target);
 			}
 		}
 	}

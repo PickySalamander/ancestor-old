@@ -33,13 +33,13 @@ namespace Potterblatt.GUI {
 					UIManager.Instance.OpenInfo(person);
 				};
 				
-				newElement.Q<Label>("name").text = person.IsDiscovered(Discovery.Name) ? 
+				newElement.Q<Label>("name").text = person.IsDiscovered(DiscoveryType.Name) ? 
 					$"{person.firstName} {person.lastName}" : "?";
 
-				var born = person.IsDiscovered(Discovery.Birth) 
+				var born = person.IsDiscovered(DiscoveryType.Birth) 
 					? DateUtils.GetYear(person.Born) : "?";
 				
-				var death = person.IsDiscovered(Discovery.Death) 
+				var death = person.IsDiscovered(DiscoveryType.Death) 
 					? DateUtils.GetYear(person.Death) : "?";
 				newElement.Q<Label>("years").text = $"{born}-{death}";
 			}

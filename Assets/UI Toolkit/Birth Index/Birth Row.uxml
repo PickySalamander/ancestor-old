@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" editor-extension-mode="False">
+    <ui:VisualElement name="row-template" class="row">
+        <ui:Label text="JUL 16 1960" display-tooltip-when-elided="true" name="date" class="date" />
+        <ui:Button text="Laura Cobington" display-tooltip-when-elided="true" name="name" class="name" />
+        <ui:Button text="Bob Cobington" display-tooltip-when-elided="true" name="father" class="parent" />
+        <ui:Button text="Janet Smith Cobington" display-tooltip-when-elided="true" name="mother" class="parent last" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -23,11 +23,11 @@ namespace Potterblatt.GUI {
 			
 			switch(lifeEvent.type) {
 				case LifeEventType.Birth:
-					discovered = person.IsDiscovered(Discovery.Birth);
+					discovered = person.IsDiscovered(DiscoveryType.Birth);
 					text.text = discovered ? $"Was born on {lifeEvent.dateTime}" : "?";
 					break;
 				case LifeEventType.Death:
-					discovered = person.IsDiscovered(Discovery.Death);
+					discovered = person.IsDiscovered(DiscoveryType.Death);
 					text.text = discovered ? $"Died on {lifeEvent.dateTime}" : "?";
 					break;
 				default:

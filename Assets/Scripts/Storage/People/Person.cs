@@ -12,7 +12,7 @@ namespace Potterblatt.Storage.People {
 		
 		public LifeEvent[] timeLine;
 		
-		public Discovery discovered = Discovery.None;
+		public DiscoveryType discovered = DiscoveryType.None;
 		
 		public LifeEvent GetEventByType(LifeEventType type) {
 			return timeLine.FirstOrDefault(lifeEvent => lifeEvent.type == type);
@@ -25,11 +25,11 @@ namespace Potterblatt.Storage.People {
 		public LifeEvent Death => GetEventByType(LifeEventType.Death);
 		
 		public bool HasNoDiscoveries() {
-			return discovered == Discovery.None;
+			return discovered == DiscoveryType.None;
 		}
 
-		public bool IsDiscovered(Discovery type) {
-			return (discovered & type) != Discovery.None;
+		public bool IsDiscovered(DiscoveryType type) {
+			return (discovered & type) != DiscoveryType.None;
 		}
 	}
 }

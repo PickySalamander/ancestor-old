@@ -18,7 +18,7 @@ namespace Potterblatt.GUI {
 		private TimeSpan timeDuration;
 		private List<LifeEventDisplay> events;
 
-		private void Awake() {
+		private void OnEnable() {
 			fullName = RootElement.Q<Label>("full-name");
 			dob = RootElement.Q<Label>("dob");
 			dod = RootElement.Q<Label>("dod");
@@ -35,16 +35,16 @@ namespace Potterblatt.GUI {
 					}
 				}
 
-				fullName.text = person.IsDiscovered(Discovery.Name) ? 
+				fullName.text = person.IsDiscovered(DiscoveryType.Name) ? 
 					$"{person.firstName} {person.lastName}" : "?";
 
 				var born = person.Born;
-				dob.text = person.IsDiscovered(Discovery.Birth) ? born.DateString : "?";
+				dob.text = person.IsDiscovered(DiscoveryType.Birth) ? born.DateString : "?";
 				
 				var death = person.Death;
 				if(death == null) {
 					dod.text = "Alive";
-				} else if(person.IsDiscovered(Discovery.Death)) {
+				} else if(person.IsDiscovered(DiscoveryType.Death)) {
 					dod.text = death.DateString;
 				}
 				else {

@@ -9,19 +9,21 @@
             <ui:Label text="BIRTH INDEX" display-tooltip-when-elided="true" style="font-size: 32px; -unity-text-align: upper-center;" />
         </ui:VisualElement>
         <ui:VisualElement name="table" style="height: 100%;">
-            <ui:VisualElement class="borders">
-                <ui:VisualElement class="date" />
-                <ui:VisualElement class="name" />
-                <ui:VisualElement class="parent" />
-                <ui:VisualElement class="parent last" />
-            </ui:VisualElement>
             <ui:VisualElement name="header" class="row">
                 <ui:Label text="Date" display-tooltip-when-elided="true" class="date" />
                 <ui:Label text="Name" display-tooltip-when-elided="true" class="name" />
                 <ui:Label text="Name of Father" display-tooltip-when-elided="true" class="parent" />
                 <ui:Label text="Name of Mother" display-tooltip-when-elided="true" class="parent last" />
             </ui:VisualElement>
-            <ui:Instance template="Birth Row" name="Birth Row" />
+            <ui:VisualElement name="rows">
+                <ui:Instance template="Birth Row" name="Birth Row" />
+            </ui:VisualElement>
+            <ui:VisualElement picking-mode="Ignore" class="borders">
+                <ui:VisualElement picking-mode="Ignore" class="date" />
+                <ui:VisualElement picking-mode="Ignore" class="name" />
+                <ui:VisualElement picking-mode="Ignore" class="parent" />
+                <ui:VisualElement picking-mode="Ignore" class="parent last" />
+            </ui:VisualElement>
         </ui:VisualElement>
     </ui:VisualElement>
 </ui:UXML>

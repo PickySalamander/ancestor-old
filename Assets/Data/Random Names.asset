@@ -12,74 +12,182 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd3cc7da3d41456a91c93adcec213140, type: 3}
   m_Name: Random Names
   m_EditorClassIdentifier: 
-  people:
-  - fullName: Elmer Lopez
-    gender: male
-  - fullName: Erica Warren
-    gender: female
-  - fullName: Guy Medina
-    gender: male
-  - fullName: Earl Hughes
-    gender: male
-  - fullName: Ida Horton
-    gender: female
-  - fullName: John Arnold
-    gender: male
-  - fullName: Charlene Ortiz
-    gender: female
-  - fullName: Jordan Fleming
-    gender: male
-  - fullName: Amber Gordon
-    gender: female
-  - fullName: Zachary Harper
-    gender: male
-  - fullName: Erin Knight
-    gender: female
-  - fullName: Gwendolyn Hopkins
-    gender: female
-  - fullName: Edna Bennett
-    gender: female
-  - fullName: Dwayne Mason
-    gender: male
-  - fullName: Joanne Mcdonalid
-    gender: female
-  - fullName: Brooklyn Barrett
-    gender: female
-  - fullName: Elaine Little
-    gender: female
-  - fullName: Ramona Hale
-    gender: female
-  - fullName: Eric Perry
-    gender: male
-  - fullName: Letitia Stone
-    gender: female
-  - fullName: Dustin Ramirez
-    gender: male
-  - fullName: Sharlene Dixon
-    gender: female
-  - fullName: Susan Cole
-    gender: female
-  - fullName: Peter Carpenter
-    gender: male
-  - fullName: Alex Hanson
-    gender: male
-  - fullName: Renee Fletcher
-    gender: female
-  - fullName: Alice Hall
-    gender: female
-  - fullName: Billie Barrett
-    gender: female
-  - fullName: Alfred Burton
-    gender: male
-  - fullName: Dale Richardson
-    gender: male
-  - fullName: Erik Bradley
-    gender: male
-  - fullName: Keith Rice
-    gender: male
-  - fullName: Lawrence Washington
-    gender: male
-  - fullName: Judith Smith
-    gender: female
-  - fullName: Ramona Gomez
-    gender: female
+  maleNames:
+  - Mitchell
+  - Howard
+  - Ritthy
+  - Barry
+  - Don
+  - Jon
+  - Pedro
+  - Martin
+  - Brian
+  - Donald
+  - Bernard
+  - Jeff
+  - Marcus
+  - Jimmie
+  - Bobby
+  - Joshua
+  - Earl
+  - Carlos
+  - Manuel
+  - Matthew
+  - Anthony
+  - Ethan
+  - Tim
+  - Lester
+  - Christian
+  - Brad
+  - Vernon
+  - Jerry
+  - Jonathan
+  - Mathew
+  - Brandon
+  - Hugh
+  - Hunter
+  - Andy
+  - Ivan
+  - William
+  - Jared
+  - Tom
+  - Alvin
+  - Elijah
+  - Randy
+  - Clifford
+  - Sergio
+  - Mario
+  - Floyd
+  - Isaiah
+  - Darren
+  - Tristan
+  - Eli
+  - Eric
+  femaleNames:
+  - Katherine
+  - Gloria
+  - Kylie
+  - Sarah
+  - Marcia
+  - Wendy
+  - Kaylee
+  - Vivan
+  - Amelia
+  - Annie
+  - Bella
+  - Teresa
+  - Amanda
+  - Tamara
+  - Judy
+  - Ellen
+  - Jane
+  - Janice
+  - Courtney
+  - Edna
+  - Naomi
+  - Minnie
+  - Jennie
+  - Anna
+  - Tammy
+  - Kathy
+  - Jackie
+  - Daisy
+  - Kim
+  - Felecia
+  - Melinda
+  - Kristen
+  - Dana
+  - Audrey
+  - Bobbie
+  - Veronica
+  - Mia
+  - Letitia
+  - Diana
+  - Julia
+  - Gabriella
+  - Mabel
+  lastNames:
+  - Mitchell
+  - Ramos
+  - Morrison
+  - Alvarez
+  - Rice
+  - George
+  - Fox
+  - Moore
+  - Wilson
+  - Beck
+  - Morales
+  - Graham
+  - Bradley
+  - Simpson
+  - Wagner
+  - Burns
+  - Fleming
+  - Crawford
+  - Schmidt
+  - Sullivan
+  - Bates
+  - Gonzalez
+  - Thompson
+  - Ruiz
+  - Garcia
+  - Lowe
+  - Wheeler
+  - Welch
+  - Meyer
+  - Taylor
+  - Mckinney
+  - James
+  - Hughes
+  - Ramirez
+  - Gordon
+  - Dunn
+  - Mccoy
+  - Dixon
+  - Jordan
+  - Barrett
+  - Scott
+  - Medina
+  - Lawrence
+  - Tucker
+  - Hunt
+  - Franklin
+  - Fields
+  - Ferguson
+  - Henderson
+  - Webb
+  - Holland
+  - Caldwell
+  - Davis
+  - Bailey
+  - Jacobs
+  - Watson
+  - Sanchez
+  - Lynch
+  - Morris
+  - Spencer
+  - Flores
+  - Evans
+  - Reed
+  - Cox
+  - Herrera
+  - Rhodes
+  - Moreno
+  - Gregory
+  - Carpenter
+  - Shelton
+  - Nichols
+  - Jones
+  - Patterson
+  - Hart
+  - Prescott
+  - Fletcher
+  - Obrien
+  - Brooks
+  - Vasquez
+  - Rodriquez
+  - Bishop
+  - Hopkins
+  - Murray
+  - Butler
