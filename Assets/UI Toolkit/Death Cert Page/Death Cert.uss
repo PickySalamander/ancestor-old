@@ -1,0 +1,158 @@
+.title {
+    -unity-font-style: bold;
+}
+
+.input {
+    -unity-font-definition: resource('Fonts & Materials/HerrVonMuellerhoff-Regular SDF');
+    font-size: 50px;
+    -unity-text-align: middle-center;
+    max-height: 30px;
+}
+
+.sub-line {
+    position: absolute;
+    width: 100%;
+    font-size: 14px;
+}
+
+.sub-line-padding {
+    padding-bottom: 30px;
+}
+
+.handwriting {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.handwriting > * {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.handwriting .input {
+    flex-grow: 2;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.handwriting .input .line {
+    position: absolute;
+    width: 100%;
+    height: 1px;
+    background-color: var(--color-brown);
+    bottom: 0;
+    left: 0;
+}
+
+.handwriting .sub-line {
+    top: 100%;
+}
+
+.bottom-section {
+    border-width: 2px;
+    border-color: var(--color-brown);
+    flex-direction: row;
+}
+
+.bottom-section > * {
+    width: 50%;
+}
+
+.bottom-section > .right {
+    margin-left: 1px;
+    border-left-color: var(--color-brown);
+    border-left-width: 2px;
+}
+
+.bottom-section > .left {
+    border-right-color: var(--color-brown);
+    border-right-width: 2px;
+    margin-left: 1px;
+    border-left-color: var(--color-brown);
+    border-left-width: 2px;
+}
+
+.bottom-section .section {
+    border-bottom-color: var(--color-brown);
+    border-bottom-width: 2px;
+    padding: 3px 0;
+}
+
+.bottom-section .section.last {
+    border-bottom-width: 0;
+}
+
+.bottom-section .section.boxes {
+    display: flex;
+    flex-direction: row;
+}
+
+.bottom-section .section.boxes .box {
+    flex-grow: 1;
+    padding: 0 5px;
+    border-right-width: 1px;
+    border-right-color: var(--color-brown);
+}
+
+.bottom-section .section.boxes .box.last {
+    border-right-width: 0;
+}
+
+.bottom-section .section .handwriting {
+    margin: 10px 0;
+}
+
+.section.side-by-side {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: center;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.section.side-by-side .label {
+    width: 40%;
+    white-space: normal;
+}
+
+.section.side-by-side > .input {
+    width: 60%;
+}
+
+.bottom-section .side-by-side .sub-line {
+    bottom: 5px;
+    left: 5px;
+}
+
+.side-section {
+    flex-direction: row;
+    border-bottom-color: var(--color-brown);
+    border-bottom-width: 2px;
+}
+
+.side-section .right {
+    flex-grow: 1;
+}
+
+.side-section .left {
+    width: 30px;
+    border-right-width: 2px;
+    border-right-color: var(--color-brown);
+}
+
+.side-section .left Label {
+    -unity-text-align: middle-left;
+    height: 20px;
+    rotate: -90deg;
+    translate: 0 50%; 
+    top: 50%;
+}
+
+.certification {
+    -unity-text-align: middle-center;
+}

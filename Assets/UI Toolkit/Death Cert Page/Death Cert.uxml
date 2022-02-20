@@ -1,0 +1,265 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Default.uss?fileID=7433441132597879392&amp;guid=d53892c7e66179b49b67247a943581c6&amp;type=3#Default" />
+    <Style src="project://database/Assets/UI%20Toolkit/Death%20Cert%20Page/Death%20Cert.uss?fileID=7433441132597879392&amp;guid=d1d544db048f87b42bc7daa6910bb12b&amp;type=3#Death Cert" />
+    <ui:VisualElement class="paper" style="width: 1024px; height: 1024px; padding: 10px;">
+        <ui:VisualElement name="top" style="margin-bottom: 20px;">
+            <ui:Label text="BUREAU OF VITAL STATISTICS" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: upper-center;" />
+            <ui:Label name="state-label" text="STATE BOARD OF HEALTH" display-tooltip-when-elided="true" style="font-size: 20px; -unity-text-align: upper-center;" />
+            <ui:Label text="STANDARD CERTIFICATE OF DEATH" display-tooltip-when-elided="true" style="font-size: 32px; -unity-text-align: upper-center;" />
+        </ui:VisualElement>
+        <ui:VisualElement name="basic-info">
+            <ui:Label text="PLACE OF DEATH" class="title" />
+            <ui:VisualElement class="handwriting">
+                <ui:VisualElement>
+                    <ui:Label text="County" />
+                    <ui:Label text="Durham" class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                </ui:VisualElement>
+                <ui:VisualElement>
+                    <ui:Label text="State" />
+                    <ui:Label text="North Arizonia" class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="handwriting sub-line-padding">
+                <ui:VisualElement>
+                    <ui:Label text="Town / City" />
+                    <ui:Label text="Town" class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                </ui:VisualElement>
+                <ui:VisualElement>
+                    <ui:Label text="Address" />
+                    <ui:Label text="A Hospital" class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                    <ui:Label text="(If death occurred in a hospital, put its NAME instead of street)" class="sub-line" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="handwriting">
+                <ui:VisualElement>
+                    <ui:Label text="FULL NAME" class="title" />
+                    <ui:Label text="Pricilla Reade" class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="handwriting">
+                <ui:VisualElement>
+                    <ui:Label text="Residence" />
+                    <ui:Label text="Town" class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="handwriting">
+                <ui:VisualElement>
+                    <ui:Label text="Length of residence where death occurred" />
+                    <ui:Label class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                </ui:VisualElement>
+                <ui:VisualElement>
+                    <ui:Label text="How long in U.S. if of foreign birth?" />
+                    <ui:Label class="input">
+                        <ui:VisualElement class="line" />
+                    </ui:Label>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement class="bottom-section">
+            <ui:VisualElement class="left">
+                <ui:VisualElement class="section">
+                    <ui:Label text="PERSONAL AND STATISTICAL PARTICULARS" style="-unity-text-align: middle-center;" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section boxes">
+                    <ui:VisualElement class="box">
+                        <ui:Label text="Sex" />
+                        <ui:Label text="female" class="input" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="box">
+                        <ui:Label text="Color or Race" />
+                        <ui:Label text="black" class="input" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="box last">
+                        <ui:Label text="Marital Status" />
+                        <ui:Label text="widowed" class="input" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="section side-by-side">
+                    <ui:Label text="Married, widowed, or divorced to" class="label" />
+                    <ui:Label text="Geo Lanford" class="input" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section side-by-side">
+                    <ui:Label text="Date of birth" class="label" />
+                    <ui:Label text="about 55 yrs old" class="input" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section">
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="Occupation of deceased" />
+                            <ui:Label text="Cook" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="Name of employer" />
+                            <ui:Label text="J.G. Chuck" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+                <ui:VisualElement class="section side-by-side">
+                    <ui:Label text="Birthplace\n(city, state, country)" class="label" />
+                    <ui:Label text="some place" class="input" />
+                </ui:VisualElement>
+                <ui:VisualElement class="side-section">
+                    <ui:VisualElement class="left">
+                        <ui:Label text="Parents" class="side-section-title" />
+                    </ui:VisualElement>
+                    <ui:VisualElement class="right">
+                        <ui:VisualElement class="section side-by-side">
+                            <ui:Label text="Name of Father" class="label" />
+                            <ui:Label text="some place" class="input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="section side-by-side">
+                            <ui:Label text="Birthplace of Father" class="label" />
+                            <ui:Label text="some place" class="input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="section side-by-side">
+                            <ui:Label text="Name of Mother" class="label" />
+                            <ui:Label text="some place" class="input" />
+                        </ui:VisualElement>
+                        <ui:VisualElement class="section side-by-side last">
+                            <ui:Label text="Birthplace of Mother" class="label" />
+                            <ui:Label text="some place" class="input" />
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                </ui:VisualElement>
+
+                <ui:VisualElement class="section side-by-side">
+                    <ui:Label text="Informant\n(address)" class="label" />
+                    <ui:Label text="John Smith" class="input" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+            <ui:VisualElement class="right">
+                <ui:VisualElement class="section">
+                    <ui:Label text="MEDICAL CERTIFICATE OF DEATH" style="-unity-text-align: middle-center;" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="section side-by-side">
+                    <ui:Label text="Date of Death" class="label" />
+                    <ui:Label text="3-29-1920" class="input" />
+                </ui:VisualElement>
+
+                <ui:VisualElement class="certification">
+                    <ui:Label text="I HEREBY CERTIFY, that I attended deceased from"/>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="3 / 11 / 20" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+
+                        <ui:VisualElement>
+                            <ui:Label text="to" />
+                            <ui:Label text="3 / 29 / 20" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="that I last saw them alive on" />
+                            <ui:Label text="3 / 29 / 20" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="and that death occurred, on the date above at" />
+                            <ui:Label text="7:30 PM" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:Label text="The CAUSE of DEATH was as follows:"/>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="Where was disease contracted if not at place of death" />
+                            <ui:Label text="home" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="Did an operation precede death?" />
+                            <ui:Label text="no" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="Was there an autopsy?" />
+                            <ui:Label text="no" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="Was test confirmed diagnosis?" />
+                            <ui:Label text="no" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="(signed)" />
+                            <ui:Label text="John Smith" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
+                            <ui:Label text="Address)" />
+                            <ui:Label text="" class="input">
+                                <ui:VisualElement class="line" />
+                            </ui:Label>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="section side-by-side">
+                        <ui:Label text="Place of Burial" class="label" />
+                        <ui:Label text="Cremated" class="input" />
+                    </ui:VisualElement>
+
+                    <ui:VisualElement class="section side-by-side">
+                        <ui:Label text="Undertaker" class="label" />
+                        <ui:Label text="John Smith" class="input" />
+                    </ui:VisualElement>
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
