@@ -23,5 +23,5 @@ MonoBehaviour:
     source: {fileID: 0}
   - type: 1
     dateTime: 3/31/1985 11:04 AM
-    source: {fileID: 0}
-  discovered: 0
+    source: {fileID: 11400000, guid: 2a496cb4696c5fe488773e0f071a1736, type: 2}
+  defaultDiscovery: 0

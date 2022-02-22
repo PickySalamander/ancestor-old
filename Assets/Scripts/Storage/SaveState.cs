@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
+using UnityEngine;
 
 namespace Potterblatt.Storage {
 	public class SaveState : SingletonMonobehaviour<SaveState> {
@@ -42,6 +43,7 @@ namespace Potterblatt.Storage {
 		}
 		
 		public DiscoveryType ChangeDiscovery(string uuid, DiscoveryType type) {
+			Debug.Log($"New discovery, before:{People[uuid]}, type:{type} after:{People[uuid] | type}");
 			return People[uuid] |= type;
 		}
 		

@@ -6,6 +6,7 @@ namespace Potterblatt.Storage {
 	public class BirthIndex : Document {
 		public int startYear;
 		public int endYear;
+		public string state;
 		
 		[Range(0, 1)]
 		public float maidenNameFrequency = .2f;

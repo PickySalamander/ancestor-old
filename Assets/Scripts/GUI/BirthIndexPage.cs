@@ -69,6 +69,8 @@ namespace Potterblatt.GUI {
 						$"{randomNames.GetFirstName()} {lastName}"
 				});
 			}
+
+			const DiscoveryType discovery = DiscoveryType.Name | DiscoveryType.Death;
 			
 			newPeople.Add(new BirthIndexRowInfo {
 				name = person.FullName,
@@ -77,11 +79,11 @@ namespace Potterblatt.GUI {
 				mother = person.mother.FullName,
 				discoverFather = new Discovery {
 					person = person.father,
-					type = DiscoveryType.Name
+					type = discovery
 				},
 				discoverMother = new Discovery {
 					person = person.mother,
-					type = DiscoveryType.Name
+					type = discovery
 				}
 			});
 

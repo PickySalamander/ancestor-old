@@ -555,6 +555,7 @@ Transform:
   - {fileID: 449542759}
   - {fileID: 753681639}
   - {fileID: 578955421}
+  - {fileID: 2126668541}
   m_Father: {fileID: 211323567}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -573,6 +574,9 @@ MonoBehaviour:
   treePage: {fileID: 449542761}
   infoPage: {fileID: 753681642}
   birthIndexPage: {fileID: 578955423}
+  deathCertPage: {fileID: 2126668542}
+  handwritingRotationAmount: 2.5
+  handwritingOffset: {x: 10, y: 3}
 --- !u!114 &976341928
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -656,3 +660,64 @@ Transform:
   m_Father: {fileID: 211323567}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2126668540
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2126668541}
+  - component: {fileID: 2126668543}
+  - component: {fileID: 2126668542}
+  m_Layer: 0
+  m_Name: Death Cert Page
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &2126668541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126668540}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 976341926}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2126668542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126668540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b8ba6ce2ee13d542ae012804c48a4cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &2126668543
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126668540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 19102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_PanelSettings: {fileID: 11400000, guid: 88da9fc6b25e9a04e872ee04b70a9bfe, type: 2}
+  m_ParentUI: {fileID: 976341928}
+  sourceAsset: {fileID: 9197481963319205126, guid: 57bde7a6a52af414cab2e5a8c0facb16, type: 3}
+  m_SortingOrder: 0

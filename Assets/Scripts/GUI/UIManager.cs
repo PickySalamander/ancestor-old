@@ -14,6 +14,15 @@ namespace Potterblatt.GUI {
 		public TreePage treePage;
 		public InfoPage infoPage;
 		public BirthIndexPage birthIndexPage;
+		public DeathCertPage deathCertPage;
+		
+		[Header("Settings")]
+
+		[Min(0)]
+		public float handwritingRotationAmount = 2;
+
+		[Min(0)]
+		public Vector2 handwritingOffset = new Vector2(20, 5);
 
 		private UIDocument rootDoc;
 		private GamePage currentPage;
@@ -46,8 +55,13 @@ namespace Potterblatt.GUI {
 		}
 
 		public void OpenDoc(Person person, Document doc) {
-			if(doc is BirthIndex birthIndex) {
-				AddPage(birthIndexPage).Setup(person, birthIndex);
+			switch(doc) {
+				case BirthIndex birthIndex:
+					AddPage(birthIndexPage).Setup(person, birthIndex);
+					break;
+				case DeathCert deathCert:
+					AddPage(deathCertPage).Setup(person, deathCert);
+					break;
 			}
 		}
 		

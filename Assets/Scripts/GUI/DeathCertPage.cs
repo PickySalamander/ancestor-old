@@ -1,8 +1,12 @@
-using UnityEngine;
-using UnityEngine.UIElements;
+using Potterblatt.Storage.Documents;
+using Potterblatt.Storage.People;
 
 namespace Potterblatt.GUI {
-	public class DeathCert : VisualElement {
+	public class DeathCertPage : GamePage {
+		public void Setup(Person person, DeathCert deathCert) {
+			deathCert.FillLabels(RootElement);
+		}
+		
 // 		public Handwriting county;
 // 		public Handwriting state;
 // 		public Handwriting town;
