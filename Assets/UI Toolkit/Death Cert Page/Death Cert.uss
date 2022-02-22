@@ -2,6 +2,11 @@
     -unity-font-style: bold;
 }
 
+#top .unity-text-element {
+    margin: 0;
+    padding: 0;
+}
+
 HandwritingElement.unity-text-element {
     -unity-font-definition: resource('Fonts & Materials/HerrVonMuellerhoff-Regular SDF');
     font-size: 40px;

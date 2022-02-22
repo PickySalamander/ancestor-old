@@ -77,31 +77,31 @@
                 <ui:VisualElement class="section boxes">
                     <ui:VisualElement class="box">
                         <ui:Label text="Sex" />
-                        <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                        <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="sex" />
                     </ui:VisualElement>
                     <ui:VisualElement class="box">
                         <ui:Label text="Color or Race" />
-                        <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                        <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="race" />
                     </ui:VisualElement>
                     <ui:VisualElement class="box last">
                         <ui:Label text="Marital Status" />
-                        <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                        <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="maritalStatus" />
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement class="section side-by-side">
                     <ui:Label text="Married, widowed, or divorced to" class="label" />
-                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="spouse" />
                 </ui:VisualElement>
                 <ui:VisualElement class="section side-by-side">
                     <ui:Label text="Date of birth" class="label" />
-                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="dob" />
                 </ui:VisualElement>
                 <ui:VisualElement class="section">
                     <ui:VisualElement class="handwriting">
                         <ui:VisualElement>
                             <ui:Label text="Occupation of deceased" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="occupation" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -109,14 +109,14 @@
                         <ui:VisualElement>
                             <ui:Label text="Name of employer" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="employer" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement class="section side-by-side">
                     <ui:Label text="Birthplace\n(city, state, country)" class="label" />
-                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="birthPlace"/>
                 </ui:VisualElement>
                 <ui:VisualElement class="side-section">
                     <ui:VisualElement class="left">
@@ -125,25 +125,25 @@
                     <ui:VisualElement class="right">
                         <ui:VisualElement class="section side-by-side">
                             <ui:Label text="Name of Father" class="label" />
-                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="nameOfFather"/>
                         </ui:VisualElement>
                         <ui:VisualElement class="section side-by-side">
                             <ui:Label text="Birthplace of Father" class="label" />
-                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="birthplaceOfFather"/>
                         </ui:VisualElement>
                         <ui:VisualElement class="section side-by-side">
                             <ui:Label text="Name of Mother" class="label" />
-                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="nameOfMother"/>
                         </ui:VisualElement>
                         <ui:VisualElement class="section side-by-side last">
                             <ui:Label text="Birthplace of Mother" class="label" />
-                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                            <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="birthplaceOfMother"/>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement class="section side-by-side">
                     <ui:Label text="Informant\n(address)" class="label" />
-                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="informant"/>
                 </ui:VisualElement>
             </ui:VisualElement>
             <ui:VisualElement class="right">
@@ -152,20 +152,20 @@
                 </ui:VisualElement>
                 <ui:VisualElement class="section side-by-side">
                     <ui:Label text="Date of Death" class="label" />
-                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="dateOfDeath"/>
                 </ui:VisualElement>
                 <ui:VisualElement class="certification">
                     <ui:Label text="I HEREBY CERTIFY, that I attended deceased from" />
                     <ui:VisualElement class="handwriting">
                         <ui:VisualElement>
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="deathWorkStart"/>
                             </ui:VisualElement>
                         </ui:VisualElement>
                         <ui:VisualElement>
                             <ui:Label text="to" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="deathWorkEnd"/>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -173,7 +173,7 @@
                         <ui:VisualElement>
                             <ui:Label text="that I last saw them alive on" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="" name="lastSaw"/>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -181,16 +181,24 @@
                         <ui:VisualElement>
                             <ui:Label text="and that death occurred, on the date above at" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement name="deathTime" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:Label text="The CAUSE of DEATH was as follows:" />
                     <ui:VisualElement class="handwriting">
                         <ui:VisualElement>
+                            <ui:VisualElement class="filled-blank">
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="causeOfDeath" />
+                            </ui:VisualElement>
+                        </ui:VisualElement>
+                    </ui:VisualElement>
+                    
+                    <ui:VisualElement class="handwriting">
+                        <ui:VisualElement>
                             <ui:Label text="Where was disease contracted if not at place of death" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="contracted" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -198,7 +206,7 @@
                         <ui:VisualElement>
                             <ui:Label text="Did an operation precede death?" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="no" name="operation"/>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -206,15 +214,15 @@
                         <ui:VisualElement>
                             <ui:Label text="Was there an autopsy?" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="autopsy"/>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="handwriting">
                         <ui:VisualElement>
-                            <ui:Label text="Was test confirmed diagnosis?" />
+                            <ui:Label text="What test confirmed diagnosis?" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="" name="diagnosisTest"/>
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
@@ -222,26 +230,26 @@
                         <ui:VisualElement>
                             <ui:Label text="(signed)" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="cornerName" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
                     <ui:VisualElement class="handwriting">
                         <ui:VisualElement>
-                            <ui:Label text="Address)" />
+                            <ui:Label text="(Address)" />
                             <ui:VisualElement class="filled-blank">
-                                <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                                <Potterblatt.GUI.HandwritingElement text="" />
                             </ui:VisualElement>
                         </ui:VisualElement>
                     </ui:VisualElement>
                 </ui:VisualElement>
                 <ui:VisualElement class="section side-by-side">
                     <ui:Label text="Place of Burial" class="label" />
-                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="placeOfBurial"/>
                 </ui:VisualElement>
                 <ui:VisualElement class="section side-by-side">
                     <ui:Label text="Undertaker" class="label" />
-                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" />
+                    <Potterblatt.GUI.HandwritingElement text="Lorem Ipsum" name="undertaker" />
                 </ui:VisualElement>
             </ui:VisualElement>
         </ui:VisualElement>

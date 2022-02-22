@@ -19,3 +19,16 @@ MonoBehaviour:
   residence: 
   lengthOfResidence: 
   foreignBirth: 
+  sex: Male
+  race: Black
+  maritalStatus: Married
+  spouse: Mary King
+  occupation: Train Yard
+  employer: W R&R
+  birthPlace: Illium
+  nameOfFather: Andrew King
+  birthplaceOfFather: Illium
+  nameOfMother: Margret King
+  birthplaceOfMother: New York, NY
+  informant: Elizabeth Mott
+  deathWorkEnd: 4/3/1985

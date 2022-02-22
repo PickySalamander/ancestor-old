@@ -1,7 +1,9 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Potterblatt.Storage {
 	[AttributeUsage(System.AttributeTargets.Field)] 
+	[MeansImplicitUse]
 	public class LabelFill : Attribute {
 		public readonly string nameOfLabel;
 
