@@ -12,6 +12,7 @@ namespace Potterblatt.GUI {
 	[RequireComponent(typeof(UIDocument))]
 	public class UIManager : SingletonMonobehaviour<UIManager> {
 		public TreePage treePage;
+		public RecordRequestPage recordRequestPage;
 		public InfoPage infoPage;
 		public BirthIndexPage birthIndexPage;
 		public DeathCertPage deathCertPage;
@@ -39,6 +40,9 @@ namespace Potterblatt.GUI {
 			
 			backButton = rootDoc.rootVisualElement.Q<Button>("back-button");
 			backButton.clicked += () => AddPage(treePage);
+
+			var searchButton = rootDoc.rootVisualElement.Q<Button>("record-request");
+			searchButton.clicked += () => AddPage(recordRequestPage);
 
 			StartCoroutine(WaitToSetup());
 		}
@@ -77,8 +81,9 @@ namespace Potterblatt.GUI {
 			page.gameObject.SetActive(true);
 			currentPage = page;
 
-			backButton.style.display =
-				new StyleEnum<DisplayStyle>(currentPage == treePage ? DisplayStyle.None : DisplayStyle.Flex);
+			var enabled = currentPage != treePage;
+			
+			backButton.SetEnabled(enabled);
 
 			return page;
 		}

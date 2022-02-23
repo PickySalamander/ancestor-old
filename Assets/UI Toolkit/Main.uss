@@ -1,29 +1,31 @@
 #top-bar {
     height: 70px;
     background-color: rgb(173, 153, 118);
-    justify-content: space-around;
+    justify-content: space-between;
     padding: 10px;
     border-bottom-color: rgb(104, 91, 71);
     border-bottom-width: 5px;
+    flex-direction: row;
 }
 
 #top-bar Button {
     width: 256px;
     height: 100%;
     border-radius: 4px;
-    border-left-width: 0;
-    border-right-width: 0;
-    border-top-width: 0;
-    border-bottom-width: 0;
+    border-width: 0;
     background-color: var(--color-light-brown);
     color: var(--color-brown);
     margin: 0;
     padding: 0;
 }
 
-#top-bar Button:hover {
+#top-bar Button:enabled:hover {
     background-color: var(--color-brown);
     color: var(--color-light-brown);
+}
+
+#top-bar Button:disabled {
+    opacity: 0.5;
 }
 
 #content {

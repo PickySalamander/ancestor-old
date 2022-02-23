@@ -16,7 +16,7 @@
 
 Button {
     border-radius: 0;
-    transition: all 0.5s;
+    transition: all 0.25s;
 }
 
 .paper {
@@ -27,3 +27,33 @@ Button {
     height: 100%;
     width: 256px;
 }
+
+.unity-base-field__input {
+    background-color: rgb(173, 153, 118);
+    border-width: 0;
+    color: var(--color-brown);
+    --unity-cursor-color: var(--color-brown);
+    --unity-selection-color: #8B7A5F;
+    border-radius: 4px;
+}
+
+.unity-base-field__label {
+    color: var(--color-brown);
+    -unity-text-align: middle-left;
+    min-width: 256px;
+}
+
+.unity-base-field:focus > .unity-base-field__label {
+    color: var(--color-brown);
+}
+
+.unity-base-dropdown__container-outer {
+    border-width: 0;
+}
+
+.unity-base-dropdown__container-inner {
+    background-color: rgb(173, 153, 118);
+    border-width: 0;
+    border-radius: 0 0 4px 4px;
+}
+

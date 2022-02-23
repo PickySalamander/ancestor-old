@@ -17,11 +17,11 @@ namespace Potterblatt.Editor {
 			if(foldout) {
 				var saveState = (SaveState) target;
 
-				if(saveState.People != null) {
-					var keys = saveState.People.Keys;
+				if(saveState.State != null) {
+					var keys = saveState.State.Keys;
 					foreach(var key in keys) {
-						saveState.People[key] = (DiscoveryType) 
-							EditorGUILayout.EnumFlagsField(key, saveState.People[key]);
+						saveState.State[key] = (DiscoveryType) 
+							EditorGUILayout.EnumFlagsField(key, saveState.State[key]);
 					}
 				}
 			}

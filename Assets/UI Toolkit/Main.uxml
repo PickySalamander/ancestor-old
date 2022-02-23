@@ -3,6 +3,7 @@
     <Style src="project://database/Assets/UI%20Toolkit/Main.uss?fileID=7433441132597879392&amp;guid=33bc9cb64daada84bbb673e44b281fb2&amp;type=3#Main" />
     <ui:VisualElement name="top-bar">
         <ui:Button text="&lt; Back" display-tooltip-when-elided="true" name="back-button" />
+        <ui:Button text="Record Request" display-tooltip-when-elided="true" name="record-request"/>
     </ui:VisualElement>
     <ui:VisualElement name="content" content-container="true" />
 </ui:UXML>

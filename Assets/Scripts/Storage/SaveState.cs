@@ -7,7 +7,12 @@ namespace Potterblatt.Storage {
 	public class SaveState : SingletonMonobehaviour<SaveState> {
 		public Person treeRoot;
 
-		public Dictionary<string, DiscoveryType> People {
+		public Dictionary<string, Person> Person {
+			get;
+			private set;
+		}
+
+		public Dictionary<string, DiscoveryType> State {
 			get;
 			private set;
 		}
@@ -15,14 +20,16 @@ namespace Potterblatt.Storage {
 		protected override void Awake() {
 			base.Awake();
 			
-			People = new Dictionary<string, DiscoveryType>();
+			State = new Dictionary<string, DiscoveryType>();
+			Person = new Dictionary<string, Person>();
 
 			var queue = new Queue<Person>();
 			queue.Enqueue(treeRoot);
 
 			while(queue.Count > 0) {
 				var person = queue.Dequeue();
-				People[person.uuid] = person.DefaultDiscovery;
+				State[person.uuid] = person.DefaultDiscovery;
+				Person[person.uuid] = person;
 
 				if(person.mother) {
 					queue.Enqueue(person.mother);
@@ -34,7 +41,7 @@ namespace Potterblatt.Storage {
 			}
 		}
 
-		public DiscoveryType this[string uuid] => People[uuid];
+		public DiscoveryType this[string uuid] => State[uuid];
 
 		public DiscoveryType this[Person person] => this[person.uuid];
 
@@ -43,8 +50,7 @@ namespace Potterblatt.Storage {
 		}
 		
 		public DiscoveryType ChangeDiscovery(string uuid, DiscoveryType type) {
-			Debug.Log($"New discovery, before:{People[uuid]}, type:{type} after:{People[uuid] | type}");
-			return People[uuid] |= type;
+			return State[uuid] |= type;
 		}
 		
 		public DiscoveryType ChangeDiscovery(Discovery discovery) {

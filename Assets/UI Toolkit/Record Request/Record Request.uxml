@@ -1,0 +1,48 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/Record%20Request/Record%20Request.uss?fileID=7433441132597879392&amp;guid=d86895ae17ab948439b22b088d732034&amp;type=3#Record Request" />
+    <ui:VisualElement class="paper">
+        <ui:Label text="RECORD REQUEST FORM" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; font-size: 32px;" />
+        <ui:Label text="Fill out the form below to issue a new record request on an individual you have at least 3 pieces of information on." display-tooltip-when-elided="true" style="white-space: normal; -unity-text-align: upper-center;" />
+        <ui:VisualElement class="search-outer">
+            <ui:VisualElement class="search-inner">
+                <ui:VisualElement class="title">
+                    <ui:Label text="SEARCH CRITERIA"/>
+                    <ui:Label name="required-counter" text="0 / 3" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement/>
+                    </ui:VisualElement>
+                    <ui:DropdownField name="name-list" label="Search target" index="-1" choices="System.Collections.Generic.List`1[System.String]" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement/>
+                    </ui:VisualElement>
+                    <ui:DropdownField name="birth-year" label="Birth year" index="-1" choices="System.Collections.Generic.List`1[System.String]" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement/>
+                    </ui:VisualElement>
+                    <ui:DropdownField name="death-year" label="Birth location" index="-1" choices="System.Collections.Generic.List`1[System.String]" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement/>
+                    </ui:VisualElement>
+                    <ui:DropdownField name="death-year" label="Death year" index="-1" choices="System.Collections.Generic.List`1[System.String]" />
+                </ui:VisualElement>
+                <ui:VisualElement class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement/>
+                    </ui:VisualElement>
+                    <ui:DropdownField name="death-year" label="Death location" index="-1" choices="System.Collections.Generic.List`1[System.String]" />
+                </ui:VisualElement>
+                <ui:VisualElement>
+                    <ui:Button name="search-button" text="ISSUE SEARCH" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
+</ui:UXML>
