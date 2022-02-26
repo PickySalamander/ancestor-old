@@ -16,8 +16,9 @@ namespace Potterblatt.GUI {
 		public InfoPage infoPage;
 		public BirthIndexPage birthIndexPage;
 		public DeathCertPage deathCertPage;
-		
-		[Header("Settings")]
+
+		[Header("Settings")] 
+		public RandomNames randomNames;
 
 		[Min(0)]
 		public float handwritingRotationAmount = 2;

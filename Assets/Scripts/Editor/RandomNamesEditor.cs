@@ -18,20 +18,20 @@ namespace Potterblatt.Editor {
 		private bool append = true;
 
 		private UnityWebRequest request;
-		
+
 		private void OnEnable() {
 			request = null;
 		}
 
 		public override void OnInspectorGUI() {
 			EditorGUILayout.Separator();
-                
+
 			EditorGUILayout.LabelField("Generate Names", EditorStyles.boldLabel);
-                
+
 			EditorGUILayout.Separator();
 
 			numNames = EditorGUILayout.IntField("Number of names to generate", numNames);
-			
+
 			append = !EditorGUILayout.Toggle("Clear out the file?", !append);
 
 			UnityEngine.GUI.enabled = numNames > 0 || request != null;
@@ -46,7 +46,7 @@ namespace Potterblatt.Editor {
 		}
 
 		private void Generate() {
-			var requestUrl = $"{GeneratorUrl}?results={numNames}&inc=gender,name&nat=US";
+			var requestUrl = $"{GeneratorUrl}?results={numNames}&inc=gender,name,location&nat=US";
 			request = UnityWebRequest.Get(requestUrl);
 			request.SendWebRequest();
 
@@ -61,7 +61,7 @@ namespace Potterblatt.Editor {
 				else {
 					Debug.LogError($"Failed to get names: {request.error}");
 				}
-				
+
 				request = null;
 				EditorApplication.update -= Update;
 			}
@@ -78,13 +78,17 @@ namespace Potterblatt.Editor {
 				var femaleNames = new HashSet<string>();
 				var maleNames = new HashSet<string>();
 				var lastNames = new HashSet<string>();
-				
+				var streets = new HashSet<string>();
+				var towns = new HashSet<string>();
+
 				if(append) {
 					femaleNames.UnionWith(targetRandom.femaleNames);
 					maleNames.UnionWith(targetRandom.maleNames);
 					lastNames.UnionWith(targetRandom.lastNames);
+					streets.UnionWith(targetRandom.streets);
+					towns.UnionWith(targetRandom.towns);
 				}
-				
+
 				foreach(var result in results) {
 					var nameObj = result.Value<JObject>("name");
 					Debug.Assert(nameObj != null, nameof(nameObj) + " != null");
@@ -93,12 +97,21 @@ namespace Potterblatt.Editor {
 					var list = isFemale ? femaleNames : maleNames;
 					list.Add(nameObj.Value<string>("first"));
 					lastNames.Add(nameObj.Value<string>("last"));
+
+					var location = result.Value<JObject>("location");
+
+					if(location != null) {
+						streets.Add($"{location["street"]?["number"]} {location["street"]?["name"]}");
+						towns.Add(location.Value<string>("city"));
+					}
 				}
 
 				targetRandom.lastNames = lastNames.ToList();
 				targetRandom.femaleNames = femaleNames.ToList();
 				targetRandom.maleNames = maleNames.ToList();
-				
+				targetRandom.streets = streets.ToList();
+				targetRandom.towns = towns.ToList();
+
 				EditorUtility.SetDirty(target);
 			}
 		}

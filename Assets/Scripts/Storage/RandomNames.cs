@@ -10,6 +10,10 @@ namespace Potterblatt.Storage.People {
 		public List<string> femaleNames;
 		public List<string> lastNames;
 
+		public List<string> streets;
+		public List<string> counties;
+		public List<string> towns;
+
 		public string GetFirstName() {
 			var isFemale = Random.Range(0, 2) == 1;
 			return GetFirstName(isFemale);
@@ -22,6 +26,18 @@ namespace Potterblatt.Storage.People {
 		
 		public string GetLastName() {
 			return lastNames[Random.Range(0, lastNames.Count)];
+		}
+
+		public string GetStreet() {
+			return streets[Random.Range(0, streets.Count)];
+		}
+		
+		public string GetTown() {
+			return towns[Random.Range(0, towns.Count)];
+		}
+		
+		public string GetCounty() {
+			return counties[Random.Range(0, counties.Count)];
 		}
 	}
 }

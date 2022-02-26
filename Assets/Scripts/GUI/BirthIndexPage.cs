@@ -10,7 +10,7 @@ using UnityEngine.UIElements;
 using Random = UnityEngine.Random;
 
 namespace Potterblatt.GUI {
-	public partial class BirthIndexPage : GamePage {
+	public class BirthIndexPage : GamePage {
 		public string dateFormat = "MMM d yyyy";
 		public RandomNames randomNames;
 

@@ -93,3 +93,44 @@
 #search-button:disabled {
     opacity: 0.5;
 }
+
+.results {
+    margin-top: 20px;
+}
+
+.results .row {
+    display: flex;
+    flex-direction: row;
+    height: 30px;
+    border-bottom-color: var(--color-brown);
+    border-bottom-width: 2px;
+}
+
+.results .row > * {
+    padding: 0 3px;
+    margin: 0;
+    border-left-width: 1px;
+    border-left-color: var(--color-brown);
+    width: 35%
+}
+
+.results #rows .row.last {
+    border-bottom-width: 0;
+}
+
+.results .row#header {
+    min-height: 30px;
+}
+
+#header Label {
+    font-size: 20px;
+}
+
+.results .date {
+    width: 20%;
+    border-left-width: 0;
+}
+
+#rows {
+    
+}

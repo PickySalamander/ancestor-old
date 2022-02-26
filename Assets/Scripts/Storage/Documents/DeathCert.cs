@@ -1,5 +1,9 @@
-﻿using Potterblatt.Storage.People;
+﻿using System;
+using Potterblatt.GUI;
+using Potterblatt.Storage.People;
+using Potterblatt.Utils;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Potterblatt.Storage.Documents {
 	[CreateAssetMenu(fileName = "Death Cert", menuName = "Ancestor/Create Death Certificate")]
@@ -61,5 +65,33 @@ namespace Potterblatt.Storage.Documents {
 		[LabelFill] public string diagnosisTest;
 
 		[LabelFill] public string placeOfBurial = "cremated";
+		
+		public override string Location => state;
+		
+		public static DeathCert CreateRandom(DateTime deathDate, bool isFemale, string location) {
+			var rando = CreateInstance<DeathCert>();
+			var randomNames = UIManager.Instance.randomNames;
+
+			rando.county = randomNames.GetCounty();
+			rando.state = location;
+			rando.town = randomNames.GetTown();
+			rando.address = "home";
+			rando.residence = randomNames.GetStreet();
+			rando.sex = isFemale ? "female" : "male";
+			rando.race = "";
+			rando.maritalStatus = "Married";
+			rando.spouse = $"{randomNames.GetFirstName(!isFemale)} {randomNames.GetLastName()}";
+			rando.occupation = "";
+			rando.employer = "";
+			rando.birthPlace = location;
+			rando.nameOfFather = $"{randomNames.GetFirstName(false)} {randomNames.GetLastName()}";
+			rando.nameOfMother = $"{randomNames.GetFirstName(true)} {randomNames.GetLastName()}";
+			rando.informant = $"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
+
+			var deathEnd = Random.Range(0, 3);
+			rando.deathWorkEnd = deathDate.AddDays(deathEnd).ToString("M/d/yyyy");
+			
+			return rando;
+		}
 	}
 }
