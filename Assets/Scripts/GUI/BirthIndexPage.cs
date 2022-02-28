@@ -70,22 +70,9 @@ namespace Potterblatt.GUI {
 				});
 			}
 
-			const DiscoveryType discovery = DiscoveryType.Name | DiscoveryType.Death;
+			var discovery = person.IsReal ? DiscoveryType.Name : DiscoveryType.None;
 			
-			newPeople.Add(new BirthIndexRowInfo {
-				name = person.FullName,
-				dob = person.Born.Parsed,
-				father = person.father.FullName,
-				mother = person.mother.FullName,
-				discoverFather = new Discovery {
-					person = person.father,
-					type = discovery
-				},
-				discoverMother = new Discovery {
-					person = person.mother,
-					type = discovery
-				}
-			});
+			newPeople.Add(new BirthIndexRowInfo(person, discovery));
 
 			lookup = new Dictionary<VisualElement, BirthIndexRowInfo>();
 

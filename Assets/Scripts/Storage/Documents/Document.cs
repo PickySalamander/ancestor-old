@@ -21,7 +21,7 @@ namespace Potterblatt.Storage.Documents {
 						Debug.LogWarning($"Failed to fill label \"{nameOfLabel}\"");
 					}
 					else {
-						label.text = field.GetValue(this).ToString();
+						label.text = field.GetValue(this)?.ToString();
 					}
 				}
 			}
