@@ -2,8 +2,12 @@
     <Style src="project://database/Assets/UI%20Toolkit/Default.uss?fileID=7433441132597879392&amp;guid=d53892c7e66179b49b67247a943581c6&amp;type=3#Default" />
     <Style src="project://database/Assets/UI%20Toolkit/Main.uss?fileID=7433441132597879392&amp;guid=33bc9cb64daada84bbb673e44b281fb2&amp;type=3#Main" />
     <ui:VisualElement name="top-bar">
-        <ui:Button text="&lt; Back" display-tooltip-when-elided="true" name="back-button" />
-        <ui:Button text="Record Request" display-tooltip-when-elided="true" name="record-request"/>
+        <ui:Button text="&lt; Back" display-tooltip-when-elided="true" name="back-button" class="flat-button" />
+        <ui:Button text="Record Request" display-tooltip-when-elided="true" name="record-request" class="flat-button"/>
     </ui:VisualElement>
     <ui:VisualElement name="content" content-container="true" />
+    
+    <ui:VisualElement name="modal-root" style="display:none" >
+        <ui:VisualElement class="shadow" />
+    </ui:VisualElement>
 </ui:UXML>

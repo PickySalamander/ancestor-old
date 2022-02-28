@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 80e9e8eec957428ca75791a7352b5c1f, type: 3}
-  m_Name: Charles King Death Cert
+  m_Name: Mary King Death Cert
   m_EditorClassIdentifier: 
   county: Burke
   state: New York
@@ -19,22 +19,22 @@ MonoBehaviour:
   residence: 
   lengthOfResidence: 
   foreignBirth: 
-  sex: Male
+  sex: Female
   race: White
   maritalStatus: Married
-  spouse: Mary King
-  occupation: Train Yard
-  employer: W R&R
+  spouse: Charles King
+  occupation: Cook
+  employer: 
   birthPlace: Illium
-  nameOfFather: Andrew King
+  nameOfFather: Henry Smith
   birthplaceOfFather: Illium
-  nameOfMother: Margret King
+  nameOfMother: Jane Beau Smith
   birthplaceOfMother: New York, NY
-  informant: Elizabeth Mott
-  deathWorkEnd: 4/3/1985
+  informant: James Smith
+  deathWorkEnd: 2/2/1982
   contracted: 
-  causeOfDeath: 
-  operation: no
+  causeOfDeath: complicatiosn from child brith
+  operation: yes
   autopsy: no
   diagnosisTest: 
   placeOfBurial: cremated

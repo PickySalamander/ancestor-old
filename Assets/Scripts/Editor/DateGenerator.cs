@@ -40,7 +40,7 @@ namespace Potterblatt.Editor {
 		}
 
 		private string GenerateDates() {
-			return DateUtils.RandomDateInYear(year).ToString(LifeEvent.DateTimeFormat);
+			return DateUtils.RandomDateInYear(year).ToString(DateUtils.DateTimeFormat);
 		}
 		
 		/// <summary>Quick open function to open the window</summary>

@@ -6,6 +6,10 @@ using Random = UnityEngine.Random;
 
 namespace Potterblatt.Utils {
 	public static class DateUtils {
+		public const string DateTimeFormat = "M/d/yyyy h:mm tt";
+		public const string StandardDateFormat = "M/d/yyyy";
+		public const string IndexDateFormat = "MMM d yyyy";
+		
 		public static string GetYear(LifeEvent lifeEvent, string unknown = "?") {
 			return lifeEvent == null ? unknown : lifeEvent.Year.ToString();
 		}
@@ -27,5 +31,7 @@ namespace Potterblatt.Utils {
 
 			return new DateTime(year, month, day, hour, minute, 0);
 		}
+
+		
 	}
 }

@@ -8,8 +8,6 @@ using Random = UnityEngine.Random;
 namespace Potterblatt.Storage.Documents {
 	[CreateAssetMenu(fileName = "Death Cert", menuName = "Ancestor/Create Death Certificate")]
 	public class DeathCert : Document {
-		public string cornerDateFormat = "M/d/yyyy";
-		
 		[Header("Basic Info")] 
 		[LabelFill] public string county;
 
@@ -68,6 +66,8 @@ namespace Potterblatt.Storage.Documents {
 		
 		public override string Location => state;
 		
+		public override string FileName => $"{state} Death Certificate";
+
 		public static DeathCert CreateRandom(DateTime deathDate, bool isFemale, string location) {
 			var rando = CreateInstance<DeathCert>();
 			var randomNames = UIManager.Instance.randomNames;

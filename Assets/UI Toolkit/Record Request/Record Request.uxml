@@ -1,62 +1,50 @@
-<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements"
-         xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements"
-         noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-	<Style src="project://database/Assets/UI%20Toolkit/Record%20Request/Record%20Request.uss?fileID=7433441132597879392&amp;guid=d86895ae17ab948439b22b088d732034&amp;type=3#Record Request"/>
-	<ui:VisualElement class="paper">
-		<ui:Label text="RECORD REQUEST FORM" display-tooltip-when-elided="true"
-		          style="-unity-text-align: middle-center; font-size: 32px;"/>
-		<ui:Label
-				text="Fill out the form below to issue a new record request on an individual you have at least 3 pieces of information on."
-				display-tooltip-when-elided="true" style="white-space: normal; -unity-text-align: upper-center;"/>
-		<ui:VisualElement class="search-outer">
-			<ui:VisualElement class="search-inner">
-				<ui:VisualElement class="title">
-					<ui:Label text="SEARCH CRITERIA"/>
-					<ui:Label name="required-counter" text="0 / 3"/>
-				</ui:VisualElement>
-				<ui:VisualElement name="name-list" class="section">
-					<ui:VisualElement class="check-mark">
-						<ui:VisualElement/>
-					</ui:VisualElement>
-					<ui:DropdownField label="Search target" index="-1"/>
-				</ui:VisualElement>
-				<ui:VisualElement name="year" class="section">
-					<ui:VisualElement class="check-mark">
-						<ui:VisualElement/>
-					</ui:VisualElement>
-					<ui:DropdownField label="Year" index="-1"/>
-				</ui:VisualElement>
-				<ui:VisualElement name="location" class="section">
-					<ui:VisualElement class="check-mark">
-						<ui:VisualElement/>
-					</ui:VisualElement>
-					<ui:DropdownField label="Location" index="-1"/>
-				</ui:VisualElement>
-				<ui:VisualElement>
-					<ui:Button name="search-button" text="ISSUE SEARCH"/>
-				</ui:VisualElement>
-			</ui:VisualElement>
-
-		</ui:VisualElement>
-
-		<ui:VisualElement class="search-outer results">
-			<ui:VisualElement class="search-inner">
-				<ui:Label class="title" text="SEARCH RESULTS"/>
-
-				<ui:VisualElement name="header" class="row">
-					<ui:Label text="Date" class="date" />
-					<ui:Label text="File Name"/>
-					<ui:Label text="Person's Name"/>
-				</ui:VisualElement>
-
-				<ui:VisualElement name="rows">
-					<ui:VisualElement class="row">
-						<ui:Label text="Date" class="date" name="date" />
-						<ui:Label text="File Name" name="file-name" />
-						<ui:Label text="Person's Name" name="person-name" />
-					</ui:VisualElement>
-				</ui:VisualElement>
-			</ui:VisualElement>
-		</ui:VisualElement>
-	</ui:VisualElement>
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:Template name="Request Result" src="project://database/Assets/UI%20Toolkit/Record%20Request/Request%20Result.uxml?fileID=9197481963319205126&amp;guid=0644d960cded1714a816231f3925eb72&amp;type=3#Request Result" />
+    <Style src="project://database/Assets/UI%20Toolkit/Record%20Request/Record%20Request.uss?fileID=7433441132597879392&amp;guid=d86895ae17ab948439b22b088d732034&amp;type=3#Record Request" />
+    <ui:VisualElement class="paper">
+        <ui:Label text="RECORD REQUEST FORM" display-tooltip-when-elided="true" style="-unity-text-align: middle-center; font-size: 32px;" />
+        <ui:Label text="Fill out the form below to issue a new record request on an individual you have at least 3 pieces of information on." display-tooltip-when-elided="true" style="white-space: normal; -unity-text-align: upper-center;" />
+        <ui:VisualElement class="search-outer">
+            <ui:VisualElement class="search-inner">
+                <ui:VisualElement class="title">
+                    <ui:Label text="SEARCH CRITERIA" />
+                    <ui:Label name="required-counter" text="0 / 3" />
+                </ui:VisualElement>
+                <ui:VisualElement name="name-list" class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement />
+                    </ui:VisualElement>
+                    <ui:DropdownField label="Search target" index="-1" />
+                </ui:VisualElement>
+                <ui:VisualElement name="year" class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement />
+                    </ui:VisualElement>
+                    <ui:DropdownField label="Year" index="-1" />
+                </ui:VisualElement>
+                <ui:VisualElement name="location" class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement />
+                    </ui:VisualElement>
+                    <ui:DropdownField label="Location" index="-1" />
+                </ui:VisualElement>
+                <ui:VisualElement>
+                    <ui:Button name="search-button" text="ISSUE SEARCH" />
+                </ui:VisualElement>
+            </ui:VisualElement>
+        </ui:VisualElement>
+        <ui:VisualElement name="results" class="search-outer">
+            <ui:VisualElement class="search-inner">
+                <ui:Label text="SEARCH RESULTS" class="title" />
+                <ui:VisualElement name="header" class="row">
+                    <ui:Label text="Date" name="date" />
+                    <ui:Label text="File Name" name="file-name" />
+                    <ui:Label text="Person&apos;s Name" name="person-name" />
+                </ui:VisualElement>
+                <ui:ScrollView name="rows">
+                    <ui:Instance template="Request Result" name="request-result" />
+                </ui:ScrollView>
+            </ui:VisualElement>
+        </ui:VisualElement>
+    </ui:VisualElement>
 </ui:UXML>

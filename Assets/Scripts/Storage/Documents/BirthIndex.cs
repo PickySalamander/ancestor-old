@@ -13,6 +13,8 @@ namespace Potterblatt.Storage {
 
 		public override string Location => state;
 
+		public override string FileName => $"{state} Birth Index {startYear}-{endYear}";
+
 		public static BirthIndex CreateRandom(int startYear, int endYear, string location) {
 			var rando = CreateInstance<BirthIndex>();
 			rando.startYear = startYear;

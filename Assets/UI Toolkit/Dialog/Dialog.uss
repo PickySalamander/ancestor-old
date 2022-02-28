@@ -1,0 +1,24 @@
+.paper {
+    min-height: 250px;
+    height: initial;
+    width: 800px;
+    margin: auto;
+}
+
+#title {
+    font-size: 32px;
+    -unity-text-align: upper-center;
+}
+
+#message {
+    white-space: normal;
+    margin: 10px 10px;
+    min-height: 150px;
+    -unity-text-align: middle-left;
+}
+
+.bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 10px 10px;
+}

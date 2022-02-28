@@ -1,5 +1,6 @@
 using Potterblatt.Storage.Documents;
 using Potterblatt.Storage.People;
+using Potterblatt.Utils;
 using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
@@ -15,7 +16,7 @@ namespace Potterblatt.GUI {
 			RootElement.Q<Label>("fullName").text = person.FullName;
 
 			var dateOfDeath = person.Death.Parsed;
-			var deathStr = dateOfDeath.ToString(deathCert.cornerDateFormat);
+			var deathStr = dateOfDeath.ToString(DateUtils.StandardDateFormat);
 			RootElement.Q<Label>("deathWorkStart").text = deathStr;
 			RootElement.Q<Label>("dateOfDeath").text = deathStr;
 			RootElement.Q<Label>("lastSaw").text = deathStr;

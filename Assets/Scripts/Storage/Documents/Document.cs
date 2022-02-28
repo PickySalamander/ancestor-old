@@ -7,6 +7,8 @@ namespace Potterblatt.Storage.Documents {
 	public abstract class Document : ScriptableObject {
 		public abstract string Location { get; }
 		
+		public abstract string FileName { get; }
+		
 		public void FillLabels(VisualElement elementToFill) {
 			foreach(var field in GetType().GetFields()) {
 				var labelFill = (LabelFill) Attribute.GetCustomAttribute(field, typeof(LabelFill));

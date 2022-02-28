@@ -33,6 +33,8 @@ namespace Potterblatt.Storage.People {
 		public LifeEvent Born => GetEventByType(LifeEventType.Birth);
 		
 		public LifeEvent Death => GetEventByType(LifeEventType.Death);
+
+		public bool IsReal => !string.IsNullOrWhiteSpace(uuid);
 		
 		public bool HasNoDiscoveries() {
 			return SaveState.Instance[this] == DiscoveryType.None;
@@ -43,8 +45,12 @@ namespace Potterblatt.Storage.People {
 		}
 		
 		public bool IsDiscovered(LifeEvent lifeEvent) {
+			return IsDiscovered(lifeEvent.type);
+		}
+		
+		public bool IsDiscovered(LifeEventType lifeEventType) {
 			var save = SaveState.Instance[this];
-			switch(lifeEvent.type) {
+			switch(lifeEventType) {
 				case LifeEventType.Birth:
 					return save.HasFlag(DiscoveryType.Birth);
 				case LifeEventType.Death:

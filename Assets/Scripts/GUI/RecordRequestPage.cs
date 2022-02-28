@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using Potterblatt.Storage;
 using Potterblatt.Storage.Documents;
@@ -7,7 +6,6 @@ using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
-using Random = UnityEngine.Random;
 
 namespace Potterblatt.GUI {
 	public class RecordRequestPage : GamePage {
@@ -25,6 +23,11 @@ namespace Potterblatt.GUI {
 		private Button submitButton;
 
 		private int count;
+
+		private VisualElement resultsSection;
+		private VisualTreeAsset rowTemplate;
+		private VisualElement resultsParent;
+		private List<VisualElement> rows;
 
 		private void OnEnable() {
 			nameToPerson =
@@ -47,6 +50,17 @@ namespace Potterblatt.GUI {
 
 			submitButton = RootElement.Q<Button>("search-button");
 			submitButton.clicked += OnSubmit;
+
+			resultsSection = RootElement.Q<VisualElement>("results");
+			resultsSection.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+
+			resultsParent = resultsSection.Q<ScrollView>();
+
+			var container = RootElement.Q<TemplateContainer>("request-result");
+			container.RemoveFromHierarchy();
+			rowTemplate = container.templateSource;
+
+			rows = null;
 
 			OnChange();
 		}
@@ -106,7 +120,7 @@ namespace Potterblatt.GUI {
 			var year = int.Parse(years.dropdown.value);
 			var location = locations.dropdown.value;
 			
-			var documents = DocumentLookup.GetDocuments(year, location);
+			var documents = new SortedSet<DocumentLookup>(DocumentLookup.GetDocuments(year, location));
 
 			var randomNames = UIManager.Instance.randomNames;
 
@@ -119,6 +133,8 @@ namespace Potterblatt.GUI {
 				var lifeEvent = new LifeEvent();
 				randomPerson.timeLine = new[] {lifeEvent};
 				
+				var date = DateUtils.RandomDate(year - 5, year + 5);
+				
 				switch(Random.Range(0, 2)) {
 					case 0:
 						lifeEvent.type = LifeEventType.Birth;
@@ -126,13 +142,49 @@ namespace Potterblatt.GUI {
 						break;
 					case 1:
 						lifeEvent.type = LifeEventType.Death;
-						var date = DateUtils.RandomDate(year - 5, year + 5);
 						lifeEvent.source = DeathCert.CreateRandom(date, isFemale, location);
 						break;
 				}
+
+				lifeEvent.dateTime = date.ToString(DateUtils.DateTimeFormat);
+
+				documents.Add(new DocumentLookup {
+					doc = lifeEvent.source,
+					enabled = true,
+					lifeEvent = lifeEvent,
+					person = randomPerson
+				});
 			}
-			
-			//TODO populate
+
+			if(rows != null) {
+				foreach(var row in rows) {
+					row.RemoveFromHierarchy();
+				}
+			}
+
+			rows = new List<VisualElement>();
+
+			resultsSection.style.display = new StyleEnum<DisplayStyle>(StyleKeyword.Undefined);
+			foreach(var document in documents) {
+				var newElement = rowTemplate.CloneTree();
+				newElement.Q<Label>("date").text = document.lifeEvent.Parsed.ToString(DateUtils.IndexDateFormat);
+				newElement.Q<Label>("file-name").text = document.doc.FileName;
+				newElement.Q<Label>("person-name").text = document.person.FullName;
+				newElement.RegisterCallback<ClickEvent>(_ => OnClick(document));
+				
+				rows.Add(newElement);
+				resultsParent.Add(newElement);
+			}
+		}
+
+		private void OnClick(DocumentLookup document) {
+			if(document.person.IsReal && document.person.IsDiscovered(document.lifeEvent)) {
+				DialogManager.Instance.ShowDialog("Already Discovered", 
+					"You have already discovered this document");
+			}
+			else {
+				UIManager.Instance.OpenDoc(document.person, document.doc);
+			}
 		}
 	}
 }

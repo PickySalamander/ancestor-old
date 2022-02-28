@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Potterblatt.Storage.Documents;
 using Potterblatt.Storage.People;
 
 namespace Potterblatt.Storage {
-	public struct DocumentLookup {
+	public struct DocumentLookup : IComparable<DocumentLookup> {
 		public Person person;
 		public LifeEvent lifeEvent;
 		public Document doc;
@@ -29,6 +30,11 @@ namespace Potterblatt.Storage {
 			}
 
 			return documents;
+		}
+
+		public int CompareTo(DocumentLookup other) {
+			var ret = lifeEvent.Parsed.CompareTo(other.lifeEvent.Parsed);
+			return ret == 0 ? string.CompareOrdinal(person.firstName, other.person.firstName) : ret;
 		}
 	}
 }

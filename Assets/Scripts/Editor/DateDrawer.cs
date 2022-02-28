@@ -3,6 +3,7 @@ using System.Globalization;
 using JetBrains.Annotations;
 using Potterblatt.Storage;
 using Potterblatt.Storage.People;
+using Potterblatt.Utils;
 using UnityEditor;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace Potterblatt.Editor {
 		
 		
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-			var value = property == null ? DateTime.Today.ToString(LifeEvent.DateTimeFormat) : property.stringValue;
+			var value = property == null ? DateTime.Today.ToString(DateUtils.DateTimeFormat) : property.stringValue;
 
 			var color = UnityEngine.GUI.color;
 
@@ -28,7 +29,7 @@ namespace Potterblatt.Editor {
 		private static bool IsParsable(string value) {
 			try {
 				// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-				DateTime.ParseExact(value, LifeEvent.DateTimeFormat, CultureInfo.InvariantCulture);
+				DateTime.ParseExact(value, DateUtils.DateTimeFormat, CultureInfo.InvariantCulture);
 			}
 			catch(Exception) {
 				return false;

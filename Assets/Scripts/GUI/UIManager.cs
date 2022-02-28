@@ -30,6 +30,8 @@ namespace Potterblatt.GUI {
 		private GamePage currentPage;
 		private Button backButton;
 
+		public VisualElement ModalRoot { get; private set; }
+
 		protected override void Awake() {
 			base.Awake();
 
@@ -44,6 +46,8 @@ namespace Potterblatt.GUI {
 
 			var searchButton = rootDoc.rootVisualElement.Q<Button>("record-request");
 			searchButton.clicked += () => AddPage(recordRequestPage);
+
+			ModalRoot = rootDoc.rootVisualElement.Q<VisualElement>("modal-root");
 
 			StartCoroutine(WaitToSetup());
 		}

@@ -1,0 +1,7 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements">
+    <ui:Button class="row">
+        <ui:Label text="Date" name="date" />
+        <ui:Label text="File Name" name="file-name" />
+        <ui:Label text="Person's Name" name="person-name" />
+    </ui:Button>
+</ui:UXML>
