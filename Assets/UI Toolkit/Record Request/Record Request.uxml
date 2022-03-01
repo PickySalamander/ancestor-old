@@ -10,12 +10,6 @@
                     <ui:Label text="SEARCH CRITERIA" />
                     <ui:Label name="required-counter" text="0 / 3" />
                 </ui:VisualElement>
-                <ui:VisualElement name="name-list" class="section">
-                    <ui:VisualElement class="check-mark">
-                        <ui:VisualElement />
-                    </ui:VisualElement>
-                    <ui:DropdownField label="Search target" index="-1" />
-                </ui:VisualElement>
                 <ui:VisualElement name="year" class="section">
                     <ui:VisualElement class="check-mark">
                         <ui:VisualElement />
@@ -27,6 +21,12 @@
                         <ui:VisualElement />
                     </ui:VisualElement>
                     <ui:DropdownField label="Location" index="-1" />
+                </ui:VisualElement>
+                <ui:VisualElement name="name" class="section">
+                    <ui:VisualElement class="check-mark">
+                        <ui:VisualElement />
+                    </ui:VisualElement>
+                    <ui:DropdownField label="Name" index="-1" />
                 </ui:VisualElement>
                 <ui:VisualElement>
                     <ui:Button name="search-button" text="ISSUE SEARCH" />

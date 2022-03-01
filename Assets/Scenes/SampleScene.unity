@@ -569,7 +569,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5903eb4221643ce81a121424b1d7f2a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  requiredCount: 3
+  requiredCount: 2
   numResults: 20
 --- !u!1 &976341925
 GameObject:

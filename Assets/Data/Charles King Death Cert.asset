@@ -38,3 +38,13 @@ MonoBehaviour:
   autopsy: no
   diagnosisTest: 
   placeOfBurial: cremated
+  discoveries:
+  - person: {fileID: 11400000, guid: 10074b35b1e65e846a507cdf5d7aafdb, type: 2}
+    type: 1
+    deathLabel: spouse
+  - person: {fileID: 11400000, guid: 0c7cb91e9a10a304eb8d3645c1dfdfb1, type: 2}
+    type: 2
+    deathLabel: dob
+  - person: {fileID: 11400000, guid: 0c7cb91e9a10a304eb8d3645c1dfdfb1, type: 2}
+    type: 4
+    deathLabel: dateOfDeath

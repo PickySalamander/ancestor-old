@@ -8,13 +8,15 @@ namespace Potterblatt.GUI {
 		public readonly DropdownField dropdown;
 		public readonly VisualElement checkbox;
 
-		public RecordRequestDropdown(VisualElement root) {
+		public RecordRequestDropdown(VisualElement root, List<string> choices) {
 			dropdown = root.Q<DropdownField>();
 			checkbox = root.Q<VisualElement>(null, "check-mark");
 			checkbox = checkbox.Children().First();
 
 			SetEnabled(false);
 			SetChecked(false);
+
+			Choices = choices;
 		}
 
 		public void SetEnabled(bool enabled) {
@@ -39,10 +41,12 @@ namespace Potterblatt.GUI {
 			get => dropdown.choices;
 			set {
 				dropdown.choices = value;
+				dropdown.choices.Insert(0, "None");
+				dropdown.index = 0;
 				SetEnabled(dropdown.choices.Count > 0);
 			}
 		}
 
-		public bool HasValue => !string.IsNullOrWhiteSpace(dropdown.value);
+		public bool HasValue => dropdown.index > 0 && dropdown.index < dropdown.choices?.Count;
 	}
 }

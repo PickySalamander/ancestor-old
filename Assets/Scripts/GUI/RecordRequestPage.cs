@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Potterblatt.Storage;
 using Potterblatt.Storage.Documents;
@@ -6,6 +7,7 @@ using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Random = UnityEngine.Random;
 
 namespace Potterblatt.GUI {
 	public class RecordRequestPage : GamePage {
@@ -13,11 +15,9 @@ namespace Potterblatt.GUI {
 
 		public int numResults = 20;
 
-		private Dictionary<string, Person> nameToPerson;
-
-		private RecordRequestDropdown nameList;
 		private RecordRequestDropdown years;
 		private RecordRequestDropdown locations;
+		private RecordRequestDropdown nameSearch;
 
 		private Label requiredCounter;
 		private Button submitButton;
@@ -30,21 +30,17 @@ namespace Potterblatt.GUI {
 		private List<VisualElement> rows;
 
 		private void OnEnable() {
-			nameToPerson =
-				SaveState.Instance.Person.Values
-					.Where(person => SaveState.Instance[person].HasFlag(DiscoveryType.Name))
-					.ToDictionary(person => person.FullName);
-
-			nameList = new RecordRequestDropdown(RootElement.Q<VisualElement>("name-list")) {
-				Choices = nameToPerson.Keys.ToList()
-			};
-			nameList.OnChange += OnNewName;
-
-			years = new RecordRequestDropdown(RootElement.Q<VisualElement>("year"));
+			years = new RecordRequestDropdown(RootElement.Q<VisualElement>("year"), 
+				DocumentLookup.GetYears());
 			years.OnChange += OnChange;
 
-			locations = new RecordRequestDropdown(RootElement.Q<VisualElement>("location"));
+			locations = new RecordRequestDropdown(RootElement.Q<VisualElement>("location"), 
+				DocumentLookup.GetLocations());
 			locations.OnChange += OnChange;
+
+			nameSearch = new RecordRequestDropdown(RootElement.Q<VisualElement>("name"), 
+				DocumentLookup.GetNames());
+			nameSearch.OnChange += OnChange;
 
 			requiredCounter = RootElement.Q<Label>("required-counter");
 
@@ -65,12 +61,12 @@ namespace Potterblatt.GUI {
 			OnChange();
 		}
 
+		
+
 		private void OnChange(ChangeEvent<string> evt = null) {
 			count = 0;
 
-			if(nameList.HasValue) {
-				count++;
-			}
+			//TODO make this cleaner
 
 			years.SetChecked(years.HasValue);
 			if(years.HasValue) {
@@ -82,45 +78,22 @@ namespace Potterblatt.GUI {
 				count++;
 			}
 
+			nameSearch.SetChecked(nameSearch.HasValue);
+			if(nameSearch.HasValue) {
+				count++;
+			}
+
 			requiredCounter.text = $"{count} / {requiredCount}";
-			submitButton.SetEnabled(count == requiredCount);
-		}
-
-		private void OnNewName(ChangeEvent<string> evt) {
-			Debug.Log($"There was a name change! {evt.newValue}");
-
-			if(!string.IsNullOrWhiteSpace(evt.newValue)) {
-				var newPerson = nameToPerson[evt.newValue];
-
-				years.Choices = new List<string>();
-				locations.Choices = new List<string>();
-
-				foreach(var lifeEvent in newPerson.timeLine) {
-					if(newPerson.IsDiscovered(lifeEvent)) {
-						years.Choices.Add(lifeEvent.Parsed.Year.ToString());
-
-						if(lifeEvent.source != null) {
-							locations.Choices.Add(lifeEvent.source.Location);
-						}
-					}
-				}
-
-				nameList.SetChecked(true);
-				years.SetEnabled(true);
-				locations.SetEnabled(true);
-			}
-			else {
-				nameList.SetChecked(false);
-				years.SetEnabled(false);
-				locations.SetEnabled(false);
-			}
+			submitButton.SetEnabled(count >= requiredCount);
 		}
 
 		private void OnSubmit() {
-			var year = int.Parse(years.dropdown.value);
+			int.TryParse(years.dropdown.value, out var year);
 			var location = locations.dropdown.value;
-			
-			var documents = new SortedSet<DocumentLookup>(DocumentLookup.GetDocuments(year, location));
+			var searchName = nameSearch.dropdown.value;
+
+			var documents = new SortedSet<DocumentLookup>(
+				DocumentLookup.GetDocuments(requiredCount, year, location, searchName));
 
 			var randomNames = UIManager.Instance.randomNames;
 
@@ -132,13 +105,21 @@ namespace Potterblatt.GUI {
 
 				var lifeEvent = new LifeEvent();
 				randomPerson.timeLine = new[] {lifeEvent};
+
+				//TODO hard code the min year (maybe birth indexes only go back so far?)
+				var minYear = year > 0 ? year - 5 : 1700;
+				var maxYear = year > 0 ? year + 5 : DateTime.Now.Year;
+				var date = DateUtils.RandomDate(minYear, maxYear);
 				
-				var date = DateUtils.RandomDate(year - 5, year + 5);
-				
+				Debug.Log($"Years {minYear} {maxYear} {date.ToString()}");
+
 				switch(Random.Range(0, 2)) {
 					case 0:
 						lifeEvent.type = LifeEventType.Birth;
-						lifeEvent.source = BirthIndex.CreateRandom(year - 5, year + 5, location);
+						lifeEvent.source = BirthIndex.CreateRandom(
+							date.Year - 25,
+							Mathf.Min(date.Year + 25, DateTime.Now.Year),
+							location);
 						break;
 					case 1:
 						lifeEvent.type = LifeEventType.Death;
@@ -150,7 +131,6 @@ namespace Potterblatt.GUI {
 
 				documents.Add(new DocumentLookup {
 					doc = lifeEvent.source,
-					enabled = true,
 					lifeEvent = lifeEvent,
 					person = randomPerson
 				});
@@ -171,7 +151,7 @@ namespace Potterblatt.GUI {
 				newElement.Q<Label>("file-name").text = document.doc.FileName;
 				newElement.Q<Label>("person-name").text = document.person.FullName;
 				newElement.RegisterCallback<ClickEvent>(_ => OnClick(document));
-				
+
 				rows.Add(newElement);
 				resultsParent.Add(newElement);
 			}
@@ -179,7 +159,7 @@ namespace Potterblatt.GUI {
 
 		private void OnClick(DocumentLookup document) {
 			if(document.person.IsReal && document.person.IsDiscovered(document.lifeEvent)) {
-				DialogManager.Instance.ShowDialog("Already Discovered", 
+				DialogManager.Instance.ShowDialog("Already Discovered",
 					"You have already discovered this document");
 			}
 			else {

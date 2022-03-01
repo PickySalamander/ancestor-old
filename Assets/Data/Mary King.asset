@@ -24,4 +24,4 @@ MonoBehaviour:
   - type: 1
     dateTime: 1/31/1982 4:10 AM
     source: {fileID: 11400000, guid: b6da93f0053f5ae41b119dfaf69b8efe, type: 2}
-  defaultDiscovery: 4
+  defaultDiscovery: 1

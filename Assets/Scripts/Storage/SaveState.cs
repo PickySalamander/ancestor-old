@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Potterblatt.Storage.Documents;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
@@ -55,6 +56,20 @@ namespace Potterblatt.Storage {
 		
 		public DiscoveryType ChangeDiscovery(Discovery discovery) {
 			return ChangeDiscovery(discovery.person, discovery.type);
+		}
+
+		public static IEnumerable<Person> IteratePeople(DiscoveryType condition = DiscoveryType.None) {
+			return condition == DiscoveryType.None ? 
+				Instance.Person.Values : 
+				Instance.Person.Values.Where(person => person.IsDiscovered(condition));
+		} 
+		
+		public static IEnumerable<KeyValuePair<Person, LifeEvent>> IterateEvents(DiscoveryType condition = DiscoveryType.None) {
+			foreach(var person in IteratePeople(condition)) {
+				foreach(var lifeEvent in person.timeLine) {
+					yield return new KeyValuePair<Person, LifeEvent>(person, lifeEvent);
+				}
+			}
 		}
 	}
 }
