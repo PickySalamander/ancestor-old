@@ -16,7 +16,7 @@ namespace Potterblatt.Storage.Documents {
 				if(labelFill != null) {
 					var nameOfLabel = labelFill.nameOfLabel ?? field.Name;
 
-					var label = elementToFill.Q<Label>(nameOfLabel);
+					var label = elementToFill.Q<TextElement>(nameOfLabel);
 					if(label == null) {
 						Debug.LogWarning($"Failed to fill label \"{nameOfLabel}\"");
 					}

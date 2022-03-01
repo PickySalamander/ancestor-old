@@ -1,8 +1,10 @@
-﻿using UnityEngine;
+﻿using System.Diagnostics.CodeAnalysis;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
-	public class HandwritingElement : Label {
+	[SuppressMessage("ReSharper", "UnusedType.Global")]
+	public class HandwritingElement : Button {
 		public HandwritingElement() {
 			if(Application.isPlaying) {
 				RegisterCallback<AttachToPanelEvent>(OnSetup);
@@ -17,20 +19,19 @@ namespace Potterblatt.GUI {
 			
 			var rotOffset = Random.Range(-manager.handwritingRotationAmount, manager.handwritingRotationAmount);
 				
-			var innerLabel = this.Q<Label>();
-			innerLabel.style.rotate = new StyleRotate {
+			style.rotate = new StyleRotate {
 				value = new Rotate(new Angle(rotOffset))
 			};
 
-			innerLabel.style.translate = new StyleTranslate {
+			style.translate = new StyleTranslate {
 				value = new Translate {
 					x = new Length(posOffset.x, LengthUnit.Pixel),
 					y = new Length(posOffset.y, LengthUnit.Pixel)
 				}
 			};
 		}
-
-		public new class UxmlFactory : UnityEngine.UIElements.UxmlFactory<HandwritingElement, Label.UxmlTraits> { }
+		
+		public new class UxmlFactory : UxmlFactory<HandwritingElement, Label.UxmlTraits> { }
 
 		public new class UxmlTraits : TextElement.UxmlTraits { }
 	}

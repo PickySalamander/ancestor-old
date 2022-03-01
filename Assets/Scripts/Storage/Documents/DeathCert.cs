@@ -3,13 +3,13 @@ using Potterblatt.GUI;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Potterblatt.Storage.Documents {
 	[CreateAssetMenu(fileName = "Death Cert", menuName = "Ancestor/Create Death Certificate")]
 	public class DeathCert : Document {
-		[Header("Basic Info")] 
-		[LabelFill] public string county;
+		[Header("Basic Info")] [LabelFill] public string county;
 
 		[LabelFill] public string state;
 
@@ -17,12 +17,11 @@ namespace Potterblatt.Storage.Documents {
 
 		[LabelFill] public string address;
 
-		[Header("Basic Info Pt 2")] 
-		[LabelFill]
+		[Header("Basic Info Pt 2")] [LabelFill]
 		public string residence;
 
 		[LabelFill] public string lengthOfResidence;
-		
+
 		[LabelFill] public string foreignBirth;
 
 		[Header("Personal Info")] [LabelFill] public string sex;
@@ -38,34 +37,35 @@ namespace Potterblatt.Storage.Documents {
 		[LabelFill] public string employer;
 
 		[LabelFill] public string birthPlace;
-		
+
 		[LabelFill] public string nameOfFather;
-		
+
 		[LabelFill] public string birthplaceOfFather;
-		
+
 		[LabelFill] public string nameOfMother;
-		
+
 		[LabelFill] public string birthplaceOfMother;
-		
+
 		[LabelFill] public string informant;
-		
-		[Header("Certification")]
-		[LabelFill] public string deathWorkEnd;
-		
+
+		[Header("Certification")] [LabelFill] public string deathWorkEnd;
+
 		[LabelFill] public string contracted;
-		
+
 		[LabelFill] public string causeOfDeath;
-		
+
 		[LabelFill] public string operation = "no";
-		
+
 		[LabelFill] public string autopsy = "no";
 
 		[LabelFill] public string diagnosisTest;
 
 		[LabelFill] public string placeOfBurial = "cremated";
-		
+
+		public DeathDiscovery[] discoveries;
+
 		public override string Location => state;
-		
+
 		public override string FileName => $"{state} Death Certificate";
 
 		public static DeathCert CreateRandom(DateTime deathDate, bool isFemale, string location) {
@@ -90,7 +90,7 @@ namespace Potterblatt.Storage.Documents {
 
 			var deathEnd = Random.Range(0, 3);
 			rando.deathWorkEnd = deathDate.AddDays(deathEnd).ToString("M/d/yyyy");
-			
+
 			return rando;
 		}
 	}
