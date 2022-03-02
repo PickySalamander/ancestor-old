@@ -4,7 +4,6 @@ using Potterblatt.Storage.People;
 using Unity.Services.Analytics;
 using Unity.Services.Core;
 using Unity.Services.Core.Environments;
-using UnityEditor;
 
 namespace Potterblatt.Utils {
 	public class AnalyticsManager : SingletonMonobehaviour<AnalyticsManager> {
@@ -58,7 +57,7 @@ namespace Potterblatt.Utils {
 		}
 		
 		public static void RecordRequest(int year, string location, string searchName) {
-			Events.CustomData("ancestorDiscovery", new Dictionary<string, object> {
+			Events.CustomData("ancestorRecordRequest", new Dictionary<string, object> {
 				{"ancestorSearchYear", year},
 				{"ancestorSearchLocation", location},
 				{"ancestorSearchName", searchName}

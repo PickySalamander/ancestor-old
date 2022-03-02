@@ -565,7 +565,7 @@ PlayerSettings:
   webGLThreadsSupport: 0
   webGLDecompressionFallback: 0
   scriptingDefineSymbols:
-    Standalone: UNITY_ANALYTICS_EVENT_LOGS
+    Standalone: 
   additionalCompilerArguments: {}
   platformArchitecture: {}
   scriptingBackend:
@@ -660,10 +660,10 @@ PlayerSettings:
     m_VersionName: 
   apiCompatibilityLevel: 6
   activeInputHandler: 0
-  cloudProjectId: 45c99755-7950-43fe-9268-5c6a1d18c024
+  cloudProjectId: 74502fa5-df42-412c-b979-b894ca6332dc
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Ancestor Project
+  projectName: Ancestor
   organizationId: picky-salamander
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
