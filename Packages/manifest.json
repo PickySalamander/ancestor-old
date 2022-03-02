@@ -1,22 +1,13 @@
 {
-  "scopedRegistries": [
-    {
-      "name": "package.openupm.com",
-      "url": "https://package.openupm.com",
-      "scopes": [
-        "com.pixelplacement.surge.tween",
-        "jillejr.newtonsoft.json-for-unity"
-      ]
-    }
-  ],
+  "scopedRegistries": [],
   "dependencies": {
+    "com.unity.services.analytics": "3.0.0-pre.4",
     "com.unity.ide.rider": "3.0.12",
     "com.unity.test-framework": "1.1.30",
     "com.unity.timeline": "1.6.3",
     "com.unity.ugui": "1.0.0",
     "com.unity.vectorgraphics": "2.0.0-preview.18",
     "com.unity.visualscripting": "1.7.6",
-    "jillejr.newtonsoft.json-for-unity": "13.0.102",
     "com.unity.modules.ai": "1.0.0",
     "com.unity.modules.androidjni": "1.0.0",
     "com.unity.modules.animation": "1.0.0",

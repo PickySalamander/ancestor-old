@@ -42,10 +42,16 @@ namespace Potterblatt.GUI {
 			}
 			
 			backButton = rootDoc.rootVisualElement.Q<Button>("back-button");
-			backButton.clicked += () => AddPage(treePage);
+			backButton.clicked += () => {
+				AnalyticsManager.NewPage("tree");
+				AddPage(treePage);
+			};
 
 			var searchButton = rootDoc.rootVisualElement.Q<Button>("record-request");
-			searchButton.clicked += () => AddPage(recordRequestPage);
+			searchButton.clicked += () => {
+				AnalyticsManager.NewPage("recordRequest");
+				AddPage(recordRequestPage);
+			};
 
 			ModalRoot = rootDoc.rootVisualElement.Q<VisualElement>("modal-root");
 
@@ -55,15 +61,18 @@ namespace Potterblatt.GUI {
 		private IEnumerator WaitToSetup() {
 			yield return new WaitUntil(() => SaveState.IsSetup);
 			
+			AnalyticsManager.NewPage("tree");
 			AddPage(treePage);
 		}
 
 		public void OpenInfo(Person person) {
-			Debug.Log($"Open person! {person.firstName}");
+			AnalyticsManager.NewPersonPage(person);
 			AddPage(infoPage).Person = person;
 		}
 
 		public void OpenDoc(Person person, Document doc) {
+			AnalyticsManager.NewDocPage(person, doc);
+			
 			switch(doc) {
 				case BirthIndex birthIndex:
 					AddPage(birthIndexPage).Setup(person, birthIndex);

@@ -9,9 +9,12 @@ namespace Potterblatt.GUI {
 	public class DeathCertPage : GamePage {
 		public RandomNames randomNames;
 
+		private DeathCert currentPage;
 		private Dictionary<string, DeathDiscovery> discoveriesAllowed;
 		
 		public void Setup(Person person, DeathCert deathCert) {
+			currentPage = deathCert;
+			
 			deathCert.FillLabels(RootElement);
 
 			var stateLabel = RootElement.Q<TextElement>("state-label");
@@ -43,6 +46,7 @@ namespace Potterblatt.GUI {
 
 		private void OnClick(ClickEvent evt) {
 			if(evt.target is Button button && discoveriesAllowed.TryGetValue(button.name, out var value)) {
+				AnalyticsManager.NewDiscovery(value.person, value.type, currentPage);
 				SaveState.Instance.ChangeDiscovery(value.person, value.type);
 			}
 		}

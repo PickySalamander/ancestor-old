@@ -91,6 +91,8 @@ namespace Potterblatt.GUI {
 			int.TryParse(years.dropdown.value, out var year);
 			var location = locations.dropdown.value;
 			var searchName = nameSearch.dropdown.value;
+			
+			AnalyticsManager.RecordRequest(year, location, searchName);
 
 			var documents = new SortedSet<DocumentLookup>(
 				DocumentLookup.GetDocuments(requiredCount, year, location, searchName));

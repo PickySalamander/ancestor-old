@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Potterblatt.Utils;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -9,7 +8,8 @@ namespace Potterblatt.GUI {
 	public class DialogManager : SingletonMonobehaviour<DialogManager> {
 		public VisualTreeAsset dialogTemplate;
 
-		private List<VisualElement> dialogs = new();
+		private VisualElement current;
+		private readonly List<VisualElement> pending = new();
 
 		public Dialog ShowDialog(string title, string message, string ok = "Ok", string cancel = null) {
 			var newTemplate = dialogTemplate.CloneTree();
@@ -24,7 +24,11 @@ namespace Potterblatt.GUI {
 				cancelButton.style.visibility = new StyleEnum<Visibility>(Visibility.Hidden);
 			}
 
-			AddDialog(newTemplate);
+			if(current == null) {
+				AddDialog(newTemplate);
+			} else {
+				pending.Add(newTemplate);
+			}
 
 			return new Dialog(okButton, 
 				string.IsNullOrWhiteSpace(cancel) ? null : cancelButton, 
@@ -32,28 +36,35 @@ namespace Potterblatt.GUI {
 		}
 
 		private void OnClose(VisualElement element) {
-			dialogs.Remove(element);
-			element.RemoveFromHierarchy();
+			if(current == element) {
+				current = null;
+				element.RemoveFromHierarchy();
 
-			if(dialogs.Count == 0) { 
-				UIManager.Instance.ModalRoot.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+				if(pending.Count == 0) {
+					UIManager.Instance.ModalRoot.style.display = new StyleEnum<DisplayStyle>(DisplayStyle.None);
+				}
+				else {
+					var newDiag = pending[0];
+					pending.RemoveAt(0);
+					AddDialog(newDiag);
+				}
+			}
+			else {
+				pending.Remove(element);
 			}
 		}
 
 		private void AddDialog(VisualElement element) {
 			var modalRoot = UIManager.Instance.ModalRoot;
+			modalRoot.style.display = new StyleEnum<DisplayStyle>(StyleKeyword.Undefined);
 
-			if(dialogs.Count == 0) {
-				modalRoot.style.display = new StyleEnum<DisplayStyle>(StyleKeyword.Undefined);
-			}
-			
 			modalRoot.Add(element);
-			dialogs.Add(element);
+			current = element;
 		}
 
 		[ContextMenu("Sample Dialog")]
 		private void SampleDialog() {
-			ShowDialog("Test Title", "This is a test message", "Ok");
+			ShowDialog("Test Title", $"This is a test message {DateTime.Now}");
 		}
 	}
 }

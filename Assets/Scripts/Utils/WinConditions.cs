@@ -34,6 +34,8 @@ namespace Potterblatt.Utils {
 				"You discovered everything!\n\n" +
 				"You can keep fooling around if you want, but there isn't anything left to discover. " +
 				"Thanks for playing the demo, you've been a big help!");
+			
+			AnalyticsManager.Win();
 		}
 	}
 }

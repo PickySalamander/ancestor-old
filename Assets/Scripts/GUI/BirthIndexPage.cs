@@ -13,6 +13,7 @@ namespace Potterblatt.GUI {
 	public class BirthIndexPage : GamePage {
 		public RandomNames randomNames;
 
+		private BirthIndex currentPage;
 		private VisualTreeAsset rowTemplate;
 		private VisualElement rowParent;
 
@@ -46,6 +47,8 @@ namespace Potterblatt.GUI {
 
 		public void Setup(Person person, BirthIndex index) {
 			stateLabel.text = $"{index.state} State Board of Health".ToUpper();
+
+			currentPage = index;
 
 			StartCoroutine(WaitForSetup(person, index));
 		}
@@ -92,13 +95,14 @@ namespace Potterblatt.GUI {
 			rowParent.RegisterCallback<ClickEvent>(OnClick);
 		}
 
-		private static void OnClick(ClickEvent evt) {
+		private void OnClick(ClickEvent evt) {
 			if(evt.target is Button button) {
 				var userData = button.FindAncestorUserData();
 				if(userData is BirthIndexRowInfo rowInfo) {
 					var discovery = rowInfo.GetDiscovery(button.name);
 
 					if(discovery != null) {
+						AnalyticsManager.NewDiscovery(discovery.person, discovery.type, currentPage);
 						SaveState.Instance.ChangeDiscovery(discovery);
 					}
 				}
