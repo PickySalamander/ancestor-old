@@ -41,7 +41,7 @@ namespace Potterblatt.Storage.People {
 		}
 
 		public bool IsDiscovered(DiscoveryType type) {
-			return (SaveState.Instance[this] & type) != DiscoveryType.None;
+			return SaveState.Instance.IsDiscovered(this, type);
 		}
 		
 		public bool IsDiscovered(LifeEvent lifeEvent) {

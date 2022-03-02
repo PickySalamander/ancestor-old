@@ -43,14 +43,7 @@ namespace Potterblatt.GUI {
 
 		private void OnClick(ClickEvent evt) {
 			if(evt.target is Button button && discoveriesAllowed.TryGetValue(button.name, out var value)) {
-				if(value.person.IsDiscovered(value.type)) {
-					DialogManager.Instance.ShowDialog("Already Discovered", 
-						"You have already discovered this information");
-				}
-				else {
-					DialogManager.Instance.ShowDialog("Discovered", "You discovered something!");
-					SaveState.Instance.ChangeDiscovery(value.person, value.type);
-				}
+				SaveState.Instance.ChangeDiscovery(value.person, value.type);
 			}
 		}
 	}

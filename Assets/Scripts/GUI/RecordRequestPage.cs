@@ -110,8 +110,6 @@ namespace Potterblatt.GUI {
 				var minYear = year > 0 ? year - 5 : 1700;
 				var maxYear = year > 0 ? year + 5 : DateTime.Now.Year;
 				var date = DateUtils.RandomDate(minYear, maxYear);
-				
-				Debug.Log($"Years {minYear} {maxYear} {date.ToString()}");
 
 				switch(Random.Range(0, 2)) {
 					case 0:

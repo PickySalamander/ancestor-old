@@ -84,13 +84,5 @@
 }
 
 #table .row Button:hover {
-    background-color: #AD9976;
-}
-
-#table .row Button.wrong {
-    background-color: #D89774;
-}
-
-#table .row Button.right {
-    background-color: #A9C574;
+    color: black;
 }

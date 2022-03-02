@@ -1,4 +1,7 @@
-﻿namespace Potterblatt.Storage.People {
+﻿using System;
+
+namespace Potterblatt.Storage.People {
+	[Serializable]
 	public class Discovery {
 		/// <summary>The person to be discovered</summary>
 		public Person person;

@@ -11,7 +11,6 @@ using Random = UnityEngine.Random;
 
 namespace Potterblatt.GUI {
 	public class BirthIndexPage : GamePage {
-		public string dateFormat = "MMM d yyyy";
 		public RandomNames randomNames;
 
 		private VisualTreeAsset rowTemplate;
@@ -69,17 +68,15 @@ namespace Potterblatt.GUI {
 						$"{randomNames.GetFirstName()} {lastName}"
 				});
 			}
-
-			var discovery = person.IsReal ? DiscoveryType.Name : DiscoveryType.None;
 			
-			newPeople.Add(new BirthIndexRowInfo(person, discovery));
+			newPeople.Add(new BirthIndexRowInfo(person));
 
 			lookup = new Dictionary<VisualElement, BirthIndexRowInfo>();
 
 			TemplateContainer newRow = null;
 			foreach(var newPerson in newPeople) {
 				newRow = rowTemplate.CloneTree();
-				newRow.Q<TextElement>("date").text = newPerson.dob.ToString(dateFormat);
+				newRow.Q<TextElement>("date").text = newPerson.dob.ToString(DateUtils.IndexDateFormat);
 				newRow.Q<TextElement>( "name").text = newPerson.name;
 				
 				newRow.Q<TextElement>( "father").text = newPerson.father;
@@ -95,36 +92,17 @@ namespace Potterblatt.GUI {
 			rowParent.RegisterCallback<ClickEvent>(OnClick);
 		}
 
-		private void OnClick(ClickEvent evt) {
+		private static void OnClick(ClickEvent evt) {
 			if(evt.target is Button button) {
-				var classToAdd = "wrong";
 				var userData = button.FindAncestorUserData();
-				if(userData is BirthIndexRowInfo rowInfo && rowInfo.IsDiscoverable()) {
-					switch(button.name) {
-						case "mother" when rowInfo.IsDiscoverable(true):
-							SaveState.Instance.ChangeDiscovery(rowInfo.discoverMother);
-							classToAdd = "right";
-							break;
-						case "father" when rowInfo.IsDiscoverable(false):
-							SaveState.Instance.ChangeDiscovery(rowInfo.discoverFather);
-							classToAdd = "right";
-							break;
+				if(userData is BirthIndexRowInfo rowInfo) {
+					var discovery = rowInfo.GetDiscovery(button.name);
+
+					if(discovery != null) {
+						SaveState.Instance.ChangeDiscovery(discovery);
 					}
 				}
-				
-				button.AddToClassList(classToAdd);
-				button.pickingMode = PickingMode.Ignore;
-
-				StartCoroutine(RemoveClass(button));
 			}
-		}
-
-		private static IEnumerator RemoveClass(VisualElement button) {
-			yield return new WaitForSeconds(3.0f);
-			
-			button.RemoveFromClassList("right");
-			button.RemoveFromClassList("wrong");
-			button.pickingMode = PickingMode.Position;
 		}
 	}
 }

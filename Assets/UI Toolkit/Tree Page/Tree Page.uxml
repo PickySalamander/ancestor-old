@@ -1,11 +1,11 @@
 <ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
-    <Style src="project://database/Assets/UI%20Toolkit/Default.uss?fileID=7433441132597879392&amp;guid=d53892c7e66179b49b67247a943581c6&amp;type=3#Default" />
-    <Style src="project://database/Assets/UI%20Toolkit/TreePage.uss?fileID=7433441132597879392&amp;guid=05a95ce83f159d748bbea548cada69d9&amp;type=3#TreePage" />
+    <Style src="project://database/Assets/UI%20Toolkit/Tree%20Page/TreePage.uss?fileID=7433441132597879392&amp;guid=05a95ce83f159d748bbea548cada69d9&amp;type=3#TreePage" />
     <ui:VisualElement name="tree-page" class="tree-page paper" style="width: 1420px; height: 1060px;">
+        <ui:Label text="Welcome! This is your very limited family tree. You start with one document on yourself, Mackenzie. Use that document to find others and complete the tree." display-tooltip-when-elided="true" class="instructions" style="left: 10px; top: 10px;" />
+        <ui:VisualElement style="width: 520px; left: 50%; position: absolute; translate: -50% 0; top: 282px; height: 245px; background-image: url(&apos;project://database/Assets/GUI/Tree%20Lines.svg?fileID=7388822144124034973&amp;guid=92d11d1aa86495947a68476e9ef859f9&amp;type=3#Tree Lines&apos;);" />
         <ui:VisualElement name="main" style="position: absolute; top: 500px; left: 50%; translate: -50% 0;" />
-
-        <ui:VisualElement name="father" style="position: absolute; top: 250px; right: 450px;" />
-
-        <ui:VisualElement name="mother" style="position: absolute; top: 250px; left: 450px;" />
+        <ui:VisualElement name="father" style="position: absolute; top: 250px; right: 450px; translate: 50% 0;" />
+        <ui:VisualElement name="mother" style="position: absolute; top: 250px; left: 450px; -unity-background-image-tint-color: rgb(0, 0, 0); translate: -50% 0;" />
+        <ui:Label text="Click on Record Request, to search for documents" display-tooltip-when-elided="true" class="instructions" style="right: 10px; top: 10px; position: absolute;" />
     </ui:VisualElement>
 </ui:UXML>
