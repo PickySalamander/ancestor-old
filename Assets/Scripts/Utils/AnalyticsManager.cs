@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Potterblatt.Storage.Documents;
 using Potterblatt.Storage.People;
 using Unity.Services.Analytics;
 using Unity.Services.Core;
 using Unity.Services.Core.Environments;
+using UnityEngine;
 
 namespace Potterblatt.Utils {
 	public class AnalyticsManager : SingletonMonobehaviour<AnalyticsManager> {
@@ -20,13 +22,13 @@ namespace Potterblatt.Utils {
 		}
 
 		public static void NewPage(string pageName) {
-			Events.CustomData("newPage", new Dictionary<string, object> {
+			SendEvent("newPage", new Dictionary<string, object> {
 				{"pageName", pageName}
 			});
 		}
 		
 		public static void NewPersonPage(Person person) {
-			Events.CustomData("newPage", new Dictionary<string, object> {
+			SendEvent("newPage", new Dictionary<string, object> {
 				{"pageName", $"{person.firstName}-{person.lastName}"},
 				{"ancestorPerson", person.FullName},
 				{"ancestorPersonID", person.uuid}
@@ -34,10 +36,10 @@ namespace Potterblatt.Utils {
 		}
 
 		public static void NewDocPage(Person person, Document document) {
-			Events.CustomData("newPage", new Dictionary<string, object> {
+			SendEvent("newPage", new Dictionary<string, object> {
 				{"pageName", $"{person.firstName}-{person.lastName}-{document.GetType().Name}"},
 				{"ancestorPerson", person.FullName},
-				{"ancestorPersonID", person.uuid},
+				{"ancestorPersonID", person.uuid ?? "not-real"},
 				{"ancestorDoc", document.FileName}
 			});
 		}
@@ -53,11 +55,11 @@ namespace Potterblatt.Utils {
 				options["ancestorDoc"] = document.FileName;
 			}
 			
-			Events.CustomData("ancestorDiscovery", options);
+			SendEvent("ancestorDiscovery", options);
 		}
 		
 		public static void RecordRequest(int year, string location, string searchName) {
-			Events.CustomData("ancestorRecordRequest", new Dictionary<string, object> {
+			SendEvent("ancestorRecordRequest", new Dictionary<string, object> {
 				{"ancestorSearchYear", year},
 				{"ancestorSearchLocation", location},
 				{"ancestorSearchName", searchName}
@@ -65,7 +67,20 @@ namespace Potterblatt.Utils {
 		}
 		
 		public static void Win() {
-			Events.CustomData("win", new Dictionary<string, object>());
+			SendEvent("win", new Dictionary<string, object>());
+		}
+
+		private static void SendEvent(string eventName, IDictionary<string, object> eventParams = null) {
+			try {
+				Events.CustomData(eventName, eventParams ?? new Dictionary<string, object>());
+			}
+			catch(Exception e) {
+				Debug.LogWarning($"Failed to make tracking event: {e.GetType()} - {e.Message}", Instance);
+
+				if(Debug.isDebugBuild) {
+					Debug.LogException(e);
+				}
+			}
 		}
 	}
 }

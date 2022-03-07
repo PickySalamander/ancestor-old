@@ -105,29 +105,33 @@ namespace Potterblatt.GUI {
 				randomPerson.firstName = randomNames.GetFirstName(isFemale);
 				randomPerson.lastName = randomNames.GetLastName();
 
-				var lifeEvent = new LifeEvent();
-				randomPerson.timeLine = new[] {lifeEvent};
-
 				//TODO hard code the min year (maybe birth indexes only go back so far?)
 				var minYear = year > 0 ? year - 5 : 1700;
 				var maxYear = year > 0 ? year + 5 : DateTime.Now.Year;
-				var date = DateUtils.RandomDate(minYear, maxYear);
+				var birth = DateUtils.RandomDate(minYear, maxYear);
+				var death = DateUtils.RandomDateInYear(Random.Range(0, 100) + birth.Year);
+				
+				randomPerson.timeLine = new[] {
+					new LifeEvent { type = LifeEventType.Birth, dateTime = birth.ToString(DateUtils.DateTimeFormat)},
+					new LifeEvent { type = LifeEventType.Death, dateTime = death.ToString(DateUtils.DateTimeFormat)}
+				};
 
+				LifeEvent lifeEvent = null;
 				switch(Random.Range(0, 2)) {
 					case 0:
-						lifeEvent.type = LifeEventType.Birth;
+						lifeEvent = randomPerson.Born;
 						lifeEvent.source = BirthIndex.CreateRandom(
-							date.Year - 25,
-							Mathf.Min(date.Year + 25, DateTime.Now.Year),
+							birth.Year - 25,
+							Mathf.Min(birth.Year + 25, DateTime.Now.Year),
 							location);
 						break;
 					case 1:
-						lifeEvent.type = LifeEventType.Death;
-						lifeEvent.source = DeathCert.CreateRandom(date, isFemale, location);
+						lifeEvent = randomPerson.Death;
+						lifeEvent.source = DeathCert.CreateRandom(death, isFemale, location);
 						break;
+					default:
+						throw new IndexOutOfRangeException("This shouldn't happen");
 				}
-
-				lifeEvent.dateTime = date.ToString(DateUtils.DateTimeFormat);
 
 				documents.Add(new DocumentLookup {
 					doc = lifeEvent.source,

@@ -28,19 +28,24 @@ namespace Potterblatt.GUI {
 			RootElement.Q<TextElement>("dateOfDeath").text = deathStr;
 			RootElement.Q<TextElement>("lastSaw").text = deathStr;
 			
-			RootElement.Q<TextElement>("dob").text = person.Born.Parsed.ToString(DateUtils.StandardDateFormat);
+			RootElement.Q<TextElement>("dob").text = 
+				person.Born.Parsed.ToString(DateUtils.StandardDateFormat);
 			
 			RootElement.Q<TextElement>("deathTime").text = dateOfDeath.ToString("h:mm tt");
 
-			RootElement.Q<TextElement>("cornerName").text = $"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
+			RootElement.Q<TextElement>("cornerName").text = 
+				$"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
 			
-			RootElement.Q<TextElement>("undertaker").text = $"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
+			RootElement.Q<TextElement>("undertaker").text = 
+				$"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
 
 			discoveriesAllowed = new Dictionary<string, DeathDiscovery>();
-			foreach(var discovery in deathCert.discoveries) {
-				discoveriesAllowed[discovery.deathLabel] = discovery;
+			if(deathCert.discoveries != null) {
+				foreach(var discovery in deathCert.discoveries) {
+					discoveriesAllowed[discovery.deathLabel] = discovery;
+				}
 			}
-			
+
 			RootElement.RegisterCallback<ClickEvent>(OnClick);
 		}
 
