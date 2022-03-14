@@ -9,21 +9,20 @@ using UnityEngine;
 using Debug = UnityEngine.Debug;
 
 namespace Potterblatt.Editor {
-	public class DatabaseManagerEditor : EditorWindow {
+	[CustomEditor(typeof(DatabaseManager))]
+	public class DatabaseManagerEditor : UnityEditor.Editor {
 		private const string studioPref = "litedb.studio.loc";
 		
 		public string studioLocation;
-
-		private string personLookup;
-		
-		private Person editing;
 
 		private void OnEnable() {
 			studioLocation = EditorPrefs.GetString(studioPref);
 		}
 
-		private void OnGUI() {
-			UnityEngine.GUI.skin.label.wordWrap = true;
+		public override void OnInspectorGUI() {
+			base.OnInspectorGUI();
+
+			EditorGUILayout.Space();
 
 			GUILayout.Label("Database Editor", EditorStyles.boldLabel);
 
@@ -49,13 +48,12 @@ namespace Potterblatt.Editor {
 			}
 
 			UnityEngine.GUI.enabled = true;
-
-			EditorGUILayout.Space();
 		}
 
 		private void OpenStudio() {
+			var targetDb = ((DatabaseManager) target).databasePath;
 			var pathToFile = 
-				new Uri(Path.Combine(Application.dataPath, "Resources", "database")).LocalPath;
+				new Uri(Path.Combine(Application.dataPath, "Resources", targetDb)).LocalPath;
 			
 			Debug.Log($"Opening {studioLocation} with arguments {pathToFile}");
 			
@@ -70,12 +68,6 @@ namespace Potterblatt.Editor {
 			};
 			
 			process.Start();
-		}
-		
-		/// <summary>Quick open function to open the window</summary>
-		[MenuItem("Ancestor/Database Editor")]
-		public static void Open() {
-			GetWindow<DatabaseManagerEditor>(false, "Database Editor", true);
 		}
 	}
 }
