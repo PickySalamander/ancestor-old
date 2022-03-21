@@ -1,4 +1,6 @@
 ﻿using System;
+using Bogus;
+using Bogus.DataSets;
 using Potterblatt.GUI;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
@@ -68,28 +70,27 @@ namespace Potterblatt.Storage.Documents {
 
 		public override string FileName => $"{state} Death Certificate";
 
-		public static DeathCert CreateRandom(DateTime deathDate, bool isFemale, string location) {
+		public static DeathCert CreateRandom(Faker faker, DateTime deathDate, Name.Gender gender, string location) {
 			var rando = CreateInstance<DeathCert>();
-			var randomNames = UIManager.Instance.randomNames;
 
-			rando.county = randomNames.GetCounty();
+			var spouseGender = gender == Name.Gender.Female ? Name.Gender.Male : Name.Gender.Female;
+
+			rando.county = faker.Address.County();
 			rando.state = location;
-			rando.town = randomNames.GetTown();
+			rando.town = faker.Address.City();
 			rando.address = "home";
-			rando.residence = randomNames.GetStreet();
-			rando.sex = isFemale ? "female" : "male";
+			rando.residence = faker.Address.StreetAddress();
+			rando.sex = gender.ToString().ToLower();
 			rando.race = "";
 			rando.maritalStatus = "Married";
-			rando.spouse = $"{randomNames.GetFirstName(!isFemale)} {randomNames.GetLastName()}";
+			rando.spouse = faker.Name.FullName(spouseGender);
 			rando.occupation = "";
 			rando.employer = "";
 			rando.birthPlace = location;
-			rando.nameOfFather = $"{randomNames.GetFirstName(false)} {randomNames.GetLastName()}";
-			rando.nameOfMother = $"{randomNames.GetFirstName(true)} {randomNames.GetLastName()}";
-			rando.informant = $"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
-
-			var deathEnd = Random.Range(0, 3);
-			rando.deathWorkEnd = deathDate.AddDays(deathEnd).ToString("M/d/yyyy");
+			rando.nameOfFather = faker.Name.FullName(Name.Gender.Male);
+			rando.nameOfMother = faker.Name.FullName(Name.Gender.Female);
+			rando.informant = faker.Name.FullName();
+			rando.deathWorkEnd = faker.Date.Soon(3, deathDate).ToString(DateUtils.StandardDateFormat);
 
 			return rando;
 		}

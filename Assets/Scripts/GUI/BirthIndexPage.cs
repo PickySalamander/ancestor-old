@@ -2,17 +2,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Bogus;
+using Bogus.DataSets;
 using Potterblatt.Storage;
-using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Person = Potterblatt.Storage.People.Person;
 using Random = UnityEngine.Random;
 
 namespace Potterblatt.GUI {
 	public class BirthIndexPage : GamePage {
-		public RandomNames randomNames;
-
 		private BirthIndex currentPage;
 		private VisualTreeAsset rowTemplate;
 		private VisualElement rowParent;
@@ -57,18 +57,19 @@ namespace Potterblatt.GUI {
 			yield return new WaitUntil(() => numberOfPeople > 0);
 			
 			var newPeople = new SortedSet<BirthIndexRowInfo>();
+
+			var faker = new Faker();
 			
 			for(var i = 0; i < numberOfPeople-1; i++) {
-				var lastName = randomNames.GetLastName();
+				var lastName = faker.Name.LastName();
 				var maidenName = Random.Range(0f, 1f) <= index.maidenNameFrequency;
+				var motherLastName = maidenName ? $"{faker.Name.LastName()} {lastName}" : lastName;
 				
 				newPeople.Add(new BirthIndexRowInfo {
-					name = $"{randomNames.GetFirstName()} {lastName}",
+					name = $"{faker.Name.FirstName()} {lastName}",
 					dob = DateUtils.RandomDate(index.startYear, index.endYear),
-					father = $"{randomNames.GetFirstName(false)} {lastName}",
-					mother = maidenName ? 
-						$"{randomNames.GetFirstName(true)} {randomNames.GetLastName()} {lastName}" : 
-						$"{randomNames.GetFirstName()} {lastName}"
+					father = $"{faker.Name.FirstName(Name.Gender.Male)} {lastName}",
+					mother = $"{faker.Name.FirstName(Name.Gender.Female)} {motherLastName}"
 				});
 			}
 			

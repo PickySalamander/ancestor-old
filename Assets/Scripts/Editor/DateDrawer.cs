@@ -10,32 +10,30 @@ using UnityEngine;
 namespace Potterblatt.Editor {
 	[CustomPropertyDrawer(typeof(DateAttribute))]
 	public class DateDrawer : PropertyDrawer {
-		
-		
 		public override void OnGUI(Rect position, SerializedProperty property, GUIContent label) {
-			var value = property == null ? DateTime.Today.ToString(DateUtils.DateTimeFormat) : property.stringValue;
+			EditorGUI.BeginProperty(position, label, property);
+			
+			var value = new DateTime(property.longValue);
+			var currentString = value.ToString(DateUtils.DateTimeFormat);
 
-			var color = UnityEngine.GUI.color;
+			var str = EditorGUI.TextField(position, label, currentString);
 
-			if(!IsParsable(value)) {
-				UnityEngine.GUI.color = Color.red;
+			if(str != currentString) {
+				Debug.Log($"New Value! {str}");
+			}
+
+			if(str != currentString && TryParse(str, out var newDate)) {
+				property.serializedObject.Update();
+				property.longValue = newDate.Ticks;
+				property.serializedObject.ApplyModifiedProperties();
 			}
 			
-			EditorGUI.PropertyField(position, property, label);
-
-			UnityEngine.GUI.color = color;
+			EditorGUI.EndProperty();
 		}
 		
-		private static bool IsParsable(string value) {
-			try {
-				// ReSharper disable once ReturnValueOfPureMethodIsNotUsed
-				DateTime.ParseExact(value, DateUtils.DateTimeFormat, CultureInfo.InvariantCulture);
-			}
-			catch(Exception) {
-				return false;
-			}
-
-			return true;
+		private static bool TryParse(string value, out DateTime dateTime) {
+			return DateTime.TryParse(value, CultureInfo.InvariantCulture, DateTimeStyles.AssumeLocal,
+				out dateTime);
 		}
 	}
 }

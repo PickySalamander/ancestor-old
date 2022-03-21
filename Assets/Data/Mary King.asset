@@ -13,15 +13,16 @@ MonoBehaviour:
   m_Name: Mary King
   m_EditorClassIdentifier: 
   uuid: 51dca70b-c600-41d5-b1b5-b7e0dc954c26
+  isFemale: 1
   father: {fileID: 0}
   mother: {fileID: 0}
   firstName: Mary
   lastName: King
   timeLine:
   - type: 0
-    dateTime: 12/31/1963 9:29 PM
+    dateTime: 619461989400000000
     source: {fileID: 0}
   - type: 1
-    dateTime: 1/31/1982 4:10 AM
+    dateTime: 625168950000000000
     source: {fileID: 11400000, guid: b6da93f0053f5ae41b119dfaf69b8efe, type: 2}
   defaultDiscovery: 0

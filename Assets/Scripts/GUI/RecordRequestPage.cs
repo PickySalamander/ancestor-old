@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
+using Bogus;
+using Bogus.DataSets;
 using Potterblatt.Storage;
 using Potterblatt.Storage.Documents;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine;
 using UnityEngine.UIElements;
+using Person = Potterblatt.Storage.People.Person;
 using Random = UnityEngine.Random;
 
 namespace Potterblatt.GUI {
@@ -97,13 +99,13 @@ namespace Potterblatt.GUI {
 			var documents = new SortedSet<DocumentLookup>(
 				DocumentLookup.GetDocuments(requiredCount, year, location, searchName));
 
-			var randomNames = UIManager.Instance.randomNames;
+			var faker = new Faker();
 
 			for(var i = documents.Count; i < numResults; i++) {
 				var randomPerson = ScriptableObject.CreateInstance<Person>();
-				var isFemale = Random.Range(0, 2) == 1;
-				randomPerson.firstName = randomNames.GetFirstName(isFemale);
-				randomPerson.lastName = randomNames.GetLastName();
+				var gender = faker.PickRandom<Name.Gender>();
+				randomPerson.firstName = faker.Name.FirstName(gender);
+				randomPerson.lastName = faker.Name.LastName();
 
 				//TODO hard code the min year (maybe birth indexes only go back so far?)
 				var minYear = year > 0 ? year - 5 : 1700;
@@ -112,22 +114,28 @@ namespace Potterblatt.GUI {
 				var death = DateUtils.RandomDateInYear(Random.Range(0, 100) + birth.Year);
 				
 				randomPerson.timeLine = new[] {
-					new LifeEvent { type = LifeEventType.Birth, dateTime = birth.ToString(DateUtils.DateTimeFormat)},
-					new LifeEvent { type = LifeEventType.Death, dateTime = death.ToString(DateUtils.DateTimeFormat)}
+					new LifeEvent { type = LifeEventType.Birth, dateTime = birth.Ticks},
+					new LifeEvent { type = LifeEventType.Death, dateTime = death.Ticks}
 				};
-
-				LifeEvent lifeEvent = null;
-				switch(Random.Range(0, 2)) {
-					case 0:
+				
+				//TODO maybe do this differently
+				var events = death > DateTime.Now
+					? new[] {LifeEventType.Birth}
+					: new[] {LifeEventType.Birth, LifeEventType.Death};
+				
+				var eventType = faker.PickRandom(events);
+				LifeEvent lifeEvent;
+				switch(eventType) {
+					case LifeEventType.Birth:
 						lifeEvent = randomPerson.Born;
 						lifeEvent.source = BirthIndex.CreateRandom(
 							birth.Year - 25,
 							Mathf.Min(birth.Year + 25, DateTime.Now.Year),
 							location);
 						break;
-					case 1:
+					case LifeEventType.Death:
 						lifeEvent = randomPerson.Death;
-						lifeEvent.source = DeathCert.CreateRandom(death, isFemale, location);
+						lifeEvent.source = DeathCert.CreateRandom(faker, death, gender, location);
 						break;
 					default:
 						throw new IndexOutOfRangeException("This shouldn't happen");

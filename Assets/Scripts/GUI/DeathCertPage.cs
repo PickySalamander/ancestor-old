@@ -1,13 +1,13 @@
 using System.Collections.Generic;
+using Bogus;
 using Potterblatt.Storage;
 using Potterblatt.Storage.Documents;
-using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine.UIElements;
+using Person = Potterblatt.Storage.People.Person;
 
 namespace Potterblatt.GUI {
 	public class DeathCertPage : GamePage {
-		public RandomNames randomNames;
 
 		private DeathCert currentPage;
 		private Dictionary<string, DeathDiscovery> discoveriesAllowed;
@@ -33,11 +33,11 @@ namespace Potterblatt.GUI {
 			
 			RootElement.Q<TextElement>("deathTime").text = dateOfDeath.ToString("h:mm tt");
 
-			RootElement.Q<TextElement>("cornerName").text = 
-				$"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
+			var faker = new Faker();
+
+			RootElement.Q<TextElement>("cornerName").text = faker.Name.FullName();
 			
-			RootElement.Q<TextElement>("undertaker").text = 
-				$"{randomNames.GetFirstName()} {randomNames.GetLastName()}";
+			RootElement.Q<TextElement>("undertaker").text = faker.Name.FullName();
 
 			discoveriesAllowed = new Dictionary<string, DeathDiscovery>();
 			if(deathCert.discoveries != null) {

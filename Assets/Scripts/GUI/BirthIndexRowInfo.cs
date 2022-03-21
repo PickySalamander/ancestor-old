@@ -1,5 +1,7 @@
 ﻿using System;
+using Bogus;
 using Potterblatt.Storage.People;
+using Person = Potterblatt.Storage.People.Person;
 
 namespace Potterblatt.GUI {
 	public class BirthIndexRowInfo : IComparable<BirthIndexRowInfo> {

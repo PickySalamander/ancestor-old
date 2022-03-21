@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Main
   m_EditorClassIdentifier: 
   uuid: f5ca3153-df91-44ca-be27-1aa04efb4fe4
+  isFemale: 1
   father: {fileID: 11400000, guid: 0c7cb91e9a10a304eb8d3645c1dfdfb1, type: 2}
   mother: {fileID: 11400000, guid: 10074b35b1e65e846a507cdf5d7aafdb, type: 2}
   firstName: Mackenzie
   lastName: King
   timeLine:
   - type: 0
-    dateTime: 1/31/1982 3:59 AM
+    dateTime: 625168943400000000
     source: {fileID: 11400000, guid: 79ee0295231d9444b843ab39348dfe3b, type: 2}
   defaultDiscovery: -1

@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Linq;
-using UnityEditor;
 using UnityEngine;
 
 namespace Potterblatt.Storage.People {
 	[CreateAssetMenu(fileName = "Person", menuName = "Ancestor/Create Person")]
 	public class Person : ScriptableObject {
 		public string uuid;
+		public bool isFemale;
 		public Person father;
 		public Person mother;
 		

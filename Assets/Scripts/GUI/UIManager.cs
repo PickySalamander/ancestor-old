@@ -4,9 +4,7 @@ using Potterblatt.Storage.Documents;
 using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.UIElements;
-using Button = UnityEngine.UIElements.Button;
 
 namespace Potterblatt.GUI {
 	[RequireComponent(typeof(UIDocument))]
@@ -17,14 +15,12 @@ namespace Potterblatt.GUI {
 		public BirthIndexPage birthIndexPage;
 		public DeathCertPage deathCertPage;
 
-		[Header("Settings")] 
-		public RandomNames randomNames;
-
+		[Header("Settings")]
 		[Min(0)]
 		public float handwritingRotationAmount = 2;
 
 		[Min(0)]
-		public Vector2 handwritingOffset = new Vector2(20, 5);
+		public Vector2 handwritingOffset = new(20, 5);
 
 		private UIDocument rootDoc;
 		private GamePage currentPage;
