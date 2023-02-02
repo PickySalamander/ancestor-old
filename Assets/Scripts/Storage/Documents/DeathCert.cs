@@ -1,14 +1,14 @@
 ﻿using System;
 using Bogus;
 using Bogus.DataSets;
-using Potterblatt.GUI;
-using Potterblatt.Storage.People;
 using Potterblatt.Utils;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 namespace Potterblatt.Storage.Documents {
+	/// <summary>
+	/// Storage for a death certificate real or generated, can be saved in the project for a real person who is on the
+	/// page
+	/// </summary>
 	[CreateAssetMenu(fileName = "Death Cert", menuName = "Ancestor/Create Death Certificate")]
 	public class DeathCert : Document {
 		[Header("Basic Info")] [LabelFill] public string county;
@@ -64,35 +64,45 @@ namespace Potterblatt.Storage.Documents {
 
 		[LabelFill] public string placeOfBurial = "cremated";
 
+		[Header("Discovery")]
+		[Tooltip("Discoveries that can be made on the page")]
 		public DeathDiscovery[] discoveries;
 
 		public override string Location => state;
 
 		public override string FileName => $"{state} Death Certificate";
 
+		/// <summary>
+		/// Create a random death certificate with the given guidelines
+		/// </summary>
+		/// <param name="faker">faker instance to use</param>
+		/// <param name="deathDate">death date to show</param>
+		/// <param name="gender">gender of the person</param>
+		/// <param name="location">the us state this occurred in</param>
+		/// <returns>the new generated certificate</returns>
 		public static DeathCert CreateRandom(Faker faker, DateTime deathDate, Name.Gender gender, string location) {
-			var rando = CreateInstance<DeathCert>();
+			var random = CreateInstance<DeathCert>();
 
 			var spouseGender = gender == Name.Gender.Female ? Name.Gender.Male : Name.Gender.Female;
 
-			rando.county = faker.Address.County();
-			rando.state = location;
-			rando.town = faker.Address.City();
-			rando.address = "home";
-			rando.residence = faker.Address.StreetAddress();
-			rando.sex = gender.ToString().ToLower();
-			rando.race = "";
-			rando.maritalStatus = "Married";
-			rando.spouse = faker.Name.FullName(spouseGender);
-			rando.occupation = "";
-			rando.employer = "";
-			rando.birthPlace = location;
-			rando.nameOfFather = faker.Name.FullName(Name.Gender.Male);
-			rando.nameOfMother = faker.Name.FullName(Name.Gender.Female);
-			rando.informant = faker.Name.FullName();
-			rando.deathWorkEnd = faker.Date.Soon(3, deathDate).ToString(DateUtils.StandardDateFormat);
+			random.county = faker.Address.County();
+			random.state = location;
+			random.town = faker.Address.City();
+			random.address = "home";
+			random.residence = faker.Address.StreetAddress();
+			random.sex = gender.ToString().ToLower();
+			random.race = "";
+			random.maritalStatus = "Married";
+			random.spouse = faker.Name.FullName(spouseGender);
+			random.occupation = "";
+			random.employer = "";
+			random.birthPlace = location;
+			random.nameOfFather = faker.Name.FullName(Name.Gender.Male);
+			random.nameOfMother = faker.Name.FullName(Name.Gender.Female);
+			random.informant = faker.Name.FullName();
+			random.deathWorkEnd = faker.Date.Soon(3, deathDate).ToString(DateUtils.StandardDateFormat);
 
-			return rando;
+			return random;
 		}
 	}
 }

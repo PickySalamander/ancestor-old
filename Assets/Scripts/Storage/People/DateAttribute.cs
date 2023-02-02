@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 
 namespace Potterblatt.Storage.People {
-	public class DateAttribute : PropertyAttribute {
-		public DateAttribute() {}
-	}
+	/// <summary>
+	/// Attribute to work with a drawer for (de)serializing a <see cref="System.DateTime"/> value. 
+	/// </summary>
+	public class DateAttribute : PropertyAttribute { }
 }

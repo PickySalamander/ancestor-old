@@ -1,12 +1,16 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Potterblatt.Storage.People {
+	/// <summary>
+	/// A discovery that can be made by the user
+	/// </summary>
 	[Serializable]
 	public class Discovery {
-		/// <summary>The person to be discovered</summary>
+		[Tooltip("The person to be discovered")]
 		public Person person;
-		
-		/// <summary>The type discovery to make</summary>
+
+		[Tooltip("The type discovery to make")]
 		public DiscoveryType type;
 	}
 }
