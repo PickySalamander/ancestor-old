@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Potterblatt.Storage.People;
+using UnityEngine;
 using UnityEngine.UIElements;
 
 namespace Potterblatt.GUI {
@@ -9,7 +10,7 @@ namespace Potterblatt.GUI {
 	/// </summary>
 	/// <seealso cref="LifeEventDisplay"/>
 	public class InfoPage : GamePage {
-		/// <summary>Template for an event to show on the timeline</summary>
+		[Tooltip("Template for an event to show on the timeline")]
 		public LifeEventDisplay lifeEventTemplate;
 
 		/// <summary>The person this page is for</summary>

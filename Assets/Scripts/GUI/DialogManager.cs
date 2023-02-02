@@ -10,7 +10,7 @@ namespace Potterblatt.GUI {
 	/// </summary>
 	/// <seealso cref="Dialog"/>
 	public class DialogManager : SingletonMonobehaviour<DialogManager> {
-		/// <summary>Template for the dialog that is rendered</summary>
+		[Tooltip("Template for the dialog that is rendered")]
 		public VisualTreeAsset dialogTemplate;
 
 		/// <summary>Current dialog on the screen</summary>
